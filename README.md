@@ -41,14 +41,21 @@ Search platform for restaurants in Barcelona and creating the favorite list of r
 | `GET`      | `/login`                           | Renders `login` form view.                                   |                                                          |
 | `POST`     | `/login`                           | Sends Login form data to the server.                         | { email, password }                                      |
 | `GET`      | `/signup`                          | Renders `signup` form view.                                  |                                                          |
-| `POST`     | `/signup`                          | Sends Sign Up info to the server and creates user in the DB. | {  email, password  }                                    |
-| `GET`      | `/private/edit-profile`            | Private route. Renders `edit-profile` form view.             |                                                          |
-| `PUT`      | `/private/edit-profile`            | Private route. Sends edit-profile info to server and updates user in DB. | { email, password, [firstName], [lastName], [imageUrl] } |
-| `GET`      | `/private/favorites`               | Private route. Render the `favorites` view.                  |                                                          |
-| `POST`     | `/private/favorites/`              | Private route. Adds a new favorite for the current user.     | { name, cuisine, city, }                                 |
-| `DELETE`   | `/private/favorites/:restaurantId` | Private route. Deletes the existing favorite from the current user. |                                                          |
-| `GET`      | `/restaurants`                     | Renders `restaurant-list` view.                              |                                                          |
-| `GET`      | `/restaurants/details/:id`         | Renders `restaurant-details` view for the particular restaurant. |                                                          |
+| `POST`     | `/signup`                          | Sends Sign Up info to the server and creates user in the DDBB.| {  username, email, password, re-password  }             |
+| `GET`      | `/profile/:userID`                 | Renders `user/profile` view.                                 |                                                          |
+| `GET`      | `/private/:userID/edit`            | Private route. Render the `profile-edit` view.               |                                                          |
+| `POST`     | `/private/:userID/edit`            | Private route. Sends `profile-edit` info to server and Updates the user in DDBB. |  { username, location, description, genres, socia.facebook, social.steam, social.twitch, social.twitter }                                                        |
+| `POST`     | `/logout`                          | Private route. User logout.                                  |                                                          |
+| `GET`      | `/profile/:userID/games`           | Renders `user-games` view.                                   |                                                          |
+| `GET`      | `/profile/:userID/wishlist`        | Renders `user-wishlist` view.                                |                                                          |
+| `GET`      | `/search`                          | Renders `game-list` view.                                    |                                                          |
+| `GET`      | `/game-list`                       | Renders `game-list` view.                                    |                                                          |
+| `GET`      | `/game/:id`                        | Renders `game-detail` view.                                  |                                                          |
+| `POST`     | `/game/:id/update`                 | Private route. Sends `game-detail` info to Server and Updates the game in DDBB.| { upvote, downvote }                                                          |
+| `POST`     | `/review/:gameID/create`           | Sends review form data to the server and creates the review in the DDBB.|  { comment }                                  |
+| `GET`      | `/review/:reviewID/edit`           | Private route. Renders the `review-edit` view.               |                                                          |
+| `POST`     | `/review/:reviewID/edit`           | Private route. Sends `review-edit` info to Server and Updates the review in DDBB.| { comment }                          |
+| `POST`     | `/review/:reviewID/delete`         | Private route. Removes the review from the DDBB              |                                                          |
 
 
 

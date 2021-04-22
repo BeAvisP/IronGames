@@ -13,16 +13,16 @@ Project Module 2 is an online database of information related to video games con
 
 ## User Stories
 
-- **404** - As a user I want to see a nice 404 page when I go to a page that doesn’t exist so that I know it was my fault
-- **500** - As a user I want to see a nice error page when the super team screws it up so that I know that is not my fault
-- **homepage** - As a user I want to be able to access the homepage and filter by type of restaurant, log in and sign up. 
-- **sign up** - As a user I want to sign up on the web page so that I can add favorite restaurants to my list.
-- **login** - As a user I want to be able to log in on the web page so that I can get back to my account
-- **logout** - As a user I want to be able to log out from the web page so that I can make sure no one will access my account
-- **favorite list** - As a user I want to see the list of my favorite and delete them.
-- **edit user** - As a user I want to be able to edit my profile.
-- **result** - As a user I want to see the list of restaurant filter by my preferences.
-- **restaurant listing** - As a user I want to see more details of the restaurant, be able to call them and visit their website and save it as favorites.
+- **404** - As users, we want to see a nice 404 page when we go to a page that doesn’t exist so that I know it was my fault
+- **500** - As user, we want to see a nice error page when the super team screws it up so that I know that is not my fault
+- **homepage** - As a users, we want to be able to access the homepage and search by game, log in and sign up. 
+- **sign up** - As users, we want to sign up on the web page so that we can add games to our library and wishlist and review games.
+- **login** - As users, we want to be able to log in on the web page so that we can get back to our profile.
+- **logout** - As users, we want to be able to log out from the web page so that we can make sure no one will access our account.
+- **profile page** - As users, we want to see be able to see users profiles, edit our own profile, manage our games and access our game collections.
+- **Games page** - As users, we want to be able to see all the games availables and search them.
+- **Game details** - As users, we want to see the details of a selected game, upvote the game, add to our collections or add a review.
+- **Review edit page** - As users, we want to edit the reviews made.
 
 
 

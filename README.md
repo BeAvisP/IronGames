@@ -6,8 +6,7 @@
 
 ## Description
 
-Search platform for restaurants in Barcelona and creating the favorite list of restaurants.
-
+Project Module 2 is an online database of information related to video games content online – including, ratings, and fan and critical reviews.
 
 
 <br>
@@ -127,7 +126,7 @@ Game
 
 ## Backlog
 
-[See the Trello board.](https://trello.com/b/Ni3giVKf/ironhackproject)
+[See the Trello board.](https://trello.com/b/sdPDPIGx/module2-project)
 
 
 
@@ -143,7 +142,7 @@ Game
 
 The url to your repository and to your deployed project
 
-[Repository Link]()
+[Repository Link](https://github.com/BeAvisP/M2-Project)
 
 [Deploy Link]()
 

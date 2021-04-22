@@ -58,28 +58,66 @@ Search platform for restaurants in Barcelona and creating the favorite list of r
 
 ## Models
 
-User model
+User
 
 ```javascript
 {
-  name: String,
-  email: String,
-  password: String,
-  favorites: [FavoriteId],
+  name: { type: String, require, unique},
+  email: {type: String, requiere},
+  password: {String, requiere},
+  ID: Object_ID,
+  image: String,
+  Description: {type: String, maxlength: 280},
+  Rol: {type: String},
+  Gamelist:{Object_ID [] },
+  Wishlist: {Object_ID [] },
+  Social: {
+  facebook: String,
+  twitter: String,
+  Steam: String
+  },
+  Genres:[],
+  Location: String
 }
 
 ```
 
 
 
-Favorites model
+Review
 
 ```javascript
 {
-  placeId: String,
+  _id: Object_ID,
+  User: { type: Schema.Types.ObjectId, ref:'User' },
+  Game: {type: Schema.Types.ObjectId, ref: 'Game'},
+  Comment: String,
+  Timestamp: Date,
+  Upvote: Number,
+  Downvote: Number
 }
 
 ```
+
+
+Game
+
+```javascript
+{
+  _id: Object_ID,
+  Name: String,
+  Released: String,
+  Image: String,
+  Metacritic: number,
+  Genres: [],
+  Api_id: String,
+  Screenshoots: [''],
+  Upvote: Number,
+  GameSaved: Number
+}
+
+```
+
 
 
 

@@ -112,6 +112,7 @@ Game
   Api_id: String,
   Screenshoots: [''],
   Upvote: Number,
+  Downvote: Number,
   GameSaved: Number
 }
 

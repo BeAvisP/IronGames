@@ -23,6 +23,8 @@ require("./configs/session.config")(app);
 require("./configs/passport.config")(app);
 
 const index = require("./routes/index");
+const authRouter = require('./routes/auth.routes');
 app.use("/", index);
+app.use("/", authRouter);
 
 module.exports = app;

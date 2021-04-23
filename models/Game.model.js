@@ -8,7 +8,7 @@ const gameSchema = new Schema({
   imageGame: { type: String },
   metacritic: { type: Number },
   genres: { type: [] },
-  screenshoots: { type: [""] },
+  screenshoots: { type: [] },
   upvote: { type: Number },
   dowvote: { type: Number },
   gameSaved: { type: Number },

@@ -19,6 +19,8 @@ require("./configs/views.config")(app);
 require("./configs/locals.config")(app);
 //Session configuration
 require("./configs/session.config")(app);
+//Passport
+require("./configs/passport.config")(app);
 
 const index = require("./routes/index");
 app.use("/", index);

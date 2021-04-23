@@ -20,6 +20,8 @@ Project Module 2 is an online database of information related to video games con
 - **login** - As users, we want to be able to log in on the web page so that we can get back to our profile.
 - **logout** - As users, we want to be able to log out from the web page so that we can make sure no one will access our account.
 - **profile page** - As users, we want to see be able to see users profiles, edit our own profile, manage our games and access our game collections.
+- **My games page** - As users, we want to see be able to see the user saved games and be able to remove game from the collection.
+- **Wishlist page** - As users, we want to see be able to see the user whislisted games and be able to remove game from the collection.
 - **Games page** - As users, we want to be able to see all the games availables and search them.
 - **Game details** - As users, we want to see the details of a selected game, upvote the game, add to our collections or add a review.
 - **Review edit page** - As users, we want to edit the reviews made.

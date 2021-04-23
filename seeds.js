@@ -24,6 +24,7 @@ const gameArr = [];
 // const Game = require('./models/Game.model.js');
 // require('./configs/db.config');
 
+// Call the apiHandler without the recursive function to limit the response from the api
 
 // apiHandler.getGames()
 //   .then(response => {
@@ -52,6 +53,7 @@ const gameArr = [];
 
 
 //Recursive function to get all games within the api
+
 const getAllGames = (response) => {
   console.log(response);
   response.data.results.forEach(game => {

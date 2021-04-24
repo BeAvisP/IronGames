@@ -20,14 +20,14 @@ router.post("/signup", (req, res) => {
 
   User.findOne({ name }).then((user) => {
     if (user) {
-      return res.render("signup", {
+        res.render("signup", {
         errorMessage: "User or email already exists.",
       });
     }
 
     User.findOne({ email }).then((email) => {
       if (email) {
-        return res.render("signup", {
+        res.render("signup", {
           errorMessage: "User or email already exists",
         });
       }
@@ -41,7 +41,7 @@ router.post("/signup", (req, res) => {
           if (error) {
             next(error);
           }
-          return res.redirect("/private/profile");
+          return res.redirect("/profile");
         });
       })
       .catch((error) => {
@@ -60,14 +60,14 @@ router.post(
   "/login",
   passport.authenticate("local", {
     successRedirect: "/",
-    failureRedirect: "/auth/login",
+    failureRedirect: "/login",
     passReqToCallback: true,
   })
 );
 
 router.get("/logout", (req, res) => {
   req.logout();
-  res.redirect('/');
+  res.redirect("/");
 });
 
 module.exports = router;

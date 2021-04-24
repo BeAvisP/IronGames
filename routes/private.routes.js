@@ -5,7 +5,7 @@ function isLoggedIn(req, res, next) {
   if (req.isAuthenticated()) {
     next();
   } else {
-    res.redirect("/auth/login");
+    res.redirect("/login");
   }
 }
 router.get("/profile", isLoggedIn, (req, res, next) => {

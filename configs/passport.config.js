@@ -19,24 +19,28 @@ module.exports = (app) => {
   //Local Strategy
   passport.use(
     new LocalStrategy(
-      { passReqToCallback: true },
-      (req, email, password, done) => {
-        User.findOne({ email })
+      {
+        passReqToCallback: true,
+        usernameField: "email"
+      },
+      (req, username, password, done) => {
+        console.log(username);
+        User.findOne({ email: username })
           .then((user) => {
             if (!user) {
               return done(null, false, {
-                errorMessage: "Incorrect username or password",
+                errorMessage: "Incorrect email or password",
               });
             }
             if (!bcrypt.compareSync(password, user.password)) {
               return done(null, false, {
-                errorMessage: "Incorrect username or password",
+                errorMessage: "Incorrect email or password",
               });
             }
             done(null, user);
           })
           .catch((error) => {
-            done(erro);
+            done(error);
           });
       }
     )

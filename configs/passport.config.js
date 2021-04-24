@@ -16,6 +16,7 @@ module.exports = (app) => {
         done(error);
       });
   });
+  //Local Strategy
   passport.use(
     new LocalStrategy(
       { passReqToCallback: true },

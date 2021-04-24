@@ -56,26 +56,12 @@ router.get("/login", (req, res) => {
   res.render("auth/login");
 });
 
-router.post("/login", (req, res)=> {
-  const {email, password} = req.body;
-  if(!email || !password){
-    res.render('login', {errorMessage: "Email and password are required"});
-  }
+router.post("/login", passport.authenticate("local", {
+  successRedirect: "/",
+  failureRedirect: "/auth/login",
+  passReqToCallback: true,
 
-  User.findOne({email})
-  .then(user => {
-    if(!user){
-    res.render("login", {errorMessage: 'Incorrect email or password'});
-    }
-  })
+}));
 
-  const passwordCorrect = bcrypt.compareSync(password, email.password);
-  if(passwordCorrect){
-    req.session.currentUser = user;
-    res.redirect('/private/profile')
-  }else {
-    res.render('login', {errorMessage: "Incorrect email or password"});
-  }
-})
 
 module.exports = router;

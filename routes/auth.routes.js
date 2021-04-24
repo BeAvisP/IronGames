@@ -13,21 +13,21 @@ router.post("/signup", (req, res) => {
   const { name, email, password } = req.body;
 
   if (!name || !email || !password) {
-    res.render("signup", {
+    res.render("auth/signup", {
       errorMessage: "Username and password are required",
     });
   }
 
   User.findOne({ name }).then((user) => {
     if (user) {
-        res.render("signup", {
+      res.render("auth/signup", {
         errorMessage: "User or email already exists.",
       });
     }
 
     User.findOne({ email }).then((email) => {
       if (email) {
-        res.render("signup", {
+        res.render("auth/signup", {
           errorMessage: "User or email already exists",
         });
       }
@@ -45,7 +45,7 @@ router.post("/signup", (req, res) => {
         });
       })
       .catch((error) => {
-        return res.render("signup", {
+        return res.render("auth/signup", {
           errorMessage: "Server error. Try again",
         });
       });
@@ -53,7 +53,8 @@ router.post("/signup", (req, res) => {
 });
 
 router.get("/login", (req, res) => {
-  res.render("auth/login");
+  console.log(req.flash());
+  res.render("auth/login", { errorMessage: req.flash("error")[0] });
 });
 
 router.post(
@@ -61,6 +62,7 @@ router.post(
   passport.authenticate("local", {
     successRedirect: "/",
     failureRedirect: "/login",
+    failureFlash: true,
     passReqToCallback: true,
   })
 );

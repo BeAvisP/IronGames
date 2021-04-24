@@ -10,15 +10,15 @@ router.get("/signup", (req, res) => {
 });
 
 router.post("/signup", (req, res) => {
-  const { username, email, password } = req.body;
+  const { name, email, password } = req.body;
 
-  if (!username || !email || !password) {
+  if (!name || !email || !password) {
     res.render("signup", {
       errorMessage: "Username and password are required",
     });
   }
 
-  User.findOne({ username }).then((user) => {
+  User.findOne({ name }).then((user) => {
     if (user) {
       return res.render("signup", {
         errorMessage: "User or email already exists.",
@@ -35,7 +35,7 @@ router.post("/signup", (req, res) => {
     const salt = bcypt.genSaltSync(saltRounds);
     const hashPass = bcypt.hashSync(password, salt);
 
-    User.create({ username, email, password: hashPass })
+    User.create({ name, email, password: hashPass })
       .then((newUser) => {
         req.login(newUser, (error) => {
           if (error) {
@@ -56,12 +56,13 @@ router.get("/login", (req, res) => {
   res.render("auth/login");
 });
 
-router.post("/login", passport.authenticate("local", {
-  successRedirect: "/",
-  failureRedirect: "/auth/login",
-  passReqToCallback: true,
-
-}));
-
+router.post(
+  "/login",
+  passport.authenticate("local", {
+    successRedirect: "/",
+    failureRedirect: "/auth/login",
+    passReqToCallback: true,
+  })
+);
 
 module.exports = router;

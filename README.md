@@ -43,14 +43,14 @@ Project Module 2 is an online database of information related to video games con
 | `POST`     | `/login`                           | Sends Login form data to the server.                         | { email, password }                                      |
 | `GET`      | `/signup`                          | Renders `signup` form view.                                  |                                                          |
 | `POST`     | `/signup`                          | Sends Sign Up info to the server and creates user in the DDBB.| {  username, email, password, re-password  }             |
-| `GET`      | `/profile/:userID`                 | Renders `user/profile` view.                                 |                                                          |
-| `GET`      | `/private/:userID/edit`            | Private route. Render the `profile-edit` view.               |                                                          |
-| `POST`     | `/private/:userID/edit`            | Private route. Sends `profile-edit` info to server and Updates the user in DDBB. |  { username, location, description, genres, socia.facebook, social.steam, social.twitch, social.twitter }                                                        |
+| `GET`      | `/profile/:userID`                 | Renders public `user/profile` view.                                 |                                                          |
+| `GET`      | `/profile/edit`                    | Private route. Render the `profile-edit` view.               |                                                          |
+| `POST`     | `/profile/edit`                    | Private route. Sends `profile-edit` info to server and Updates the user in DDBB. |  { username, location, description, genres, socia.facebook, social.steam, social.twitch, social.twitter }                                                        |
 | `POST`     | `/logout`                          | Private route. User logout.                                  |                                                          |
 | `GET`      | `/profile/:userID/games`           | Renders `user-games` view.                                   |                                                          |
 | `GET`      | `/profile/:userID/wishlist`        | Renders `user-wishlist` view.                                |                                                          |
-| `GET`      | `/search`                          | Renders `game-list` view.                                    |                                                          |
-| `GET`      | `/game-list`                       | Renders `game-list` view.                                    |                                                          |
+| `GET`      | `/games/search`                    | Renders filtered `game-list` view.                                    |                                                          |
+| `GET`      | `/games`                           | Renders `game-list` view.                                    |                                                          |
 | `GET`      | `/game/:id`                        | Renders `game-detail` view.                                  |                                                          |
 | `POST`     | `/game/:id/update`                 | Private route. Sends `game-detail` info to Server and Updates the game in DDBB.| { upvote, downvote }                                                          |
 | `POST`     | `/review/:gameID/create`           | Sends review form data to the server and creates the review in the DDBB.|  { comment }                                  |

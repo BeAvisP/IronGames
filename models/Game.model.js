@@ -1,17 +1,23 @@
 const mongoose = require("mongoose");
-const { schema } = require("./User.model");
 const Schema = mongoose.Schema;
 
 const gameSchema = new Schema({
-  name: { type: String },
+  name: { type: String, require: true },
   released: { type: String },
-  imageGame: { type: String },
+  background_image: { type: String },
   metacritic: { type: Number },
-  genres: { type: [] },
-  screenshoots: { type: [] },
+  genres: { type: [String] },
+  tags: { type: [String] },
+  screenshoots: { type: [String] },
   upvote: { type: Number },
   dowvote: { type: Number },
   gameSaved: { type: Number },
+  apiID: {type: Number, require: true, unique: true},
+  website: { type: String },
+  metacritic_url: { type: String },
+  developers: { type: [String] },
+  description_raw: { type: String },
+  description: { type: String },
 });
 
 const Game = mongoose.model("Game", gameSchema);

@@ -25,10 +25,12 @@ require("./configs/passport.config")(app);
 const index = require("./routes/index");
 const authRouter = require("./routes/auth.routes");
 const privateRouter = require("./routes/private.routes");
-
+const gamesRouter = require('./routes/games.routes');
+const gameRouter = require('./routes/game.routes');
 app.use("/", index);
 app.use("/", authRouter);
 app.use("/profile", privateRouter);
-
+app.use('/games', gamesRouter);
+app.use('/game', gameRouter);
 
 module.exports = app;

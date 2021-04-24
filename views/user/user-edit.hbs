@@ -1,0 +1,19 @@
+<h2>Welcome to edit</h2>
+
+<form action="/profile/edit" method="POST">
+  <label for="profileImage">Image</label>
+  <input type="image" name='profileImage'>
+
+  <label for="city"></label>
+  <input type="text" name='city' value="{{user.city}}">
+
+  <label for="description">Description</label>
+  <input type="text" name="description" value="{{user.description}}">
+
+  <label for="Social">Social</label>
+  <input type="text" value="{{user.social.facebook}}">
+  <input type="text" value="{{user.social.twitter}}">
+  <input type="text" value="{{user.social.steam}}">
+
+  <button type="submit">Save</button>
+</form>

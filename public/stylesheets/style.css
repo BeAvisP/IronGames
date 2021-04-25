@@ -11,4 +11,15 @@ h1 {
   margin: 0;
   padding: 0; }
 
+/* NAVBAR */
+.dropdown-menu {
+  background-color: #212529; }
+  .dropdown-menu .dropdown-item,
+  .dropdown-menu .dropdown-item {
+    color: rgba(255, 255, 255, 0.55); }
+  .dropdown-menu .dropdown-item:focus,
+  .dropdown-menu .dropdown-item:hover {
+    color: rgba(255, 255, 255, 0.55);
+    background-color: #444b52; }
+
 /*# sourceMappingURL=style.css.map */

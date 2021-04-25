@@ -2,7 +2,7 @@ require("dotenv").config();
 const ApiHandler = require("./apiHandler");
 const Game = require("../models/Game.model");
 require("../configs/db.config");
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const apiHandler = new ApiHandler(`${process.env.API_BASE_URL}`);
 
@@ -59,7 +59,7 @@ const getAllGames = (response, repeat) => {
     axios
       .get(response.data.next)
       .then((response) => getAllGames(response, true));
-  };
+  }
 };
 
 // Call the api to populate DDBB

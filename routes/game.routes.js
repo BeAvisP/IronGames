@@ -7,41 +7,45 @@ const Review = require("../models/Review.model");
 /* GET Games Page */
 
 router.get("/:id", (req, res, next) => {
-  const { id } = req.params;  
+  const { id } = req.params;
   let addCollection = true;
   let addWishlist = true;
   let showWishlist = true;
   Game.findById(id)
     .then((game) => {
       Review.find({ game: id })
-      .populate('user')
-      .then((reviews) => {
-        console.log(reviews);
+        .populate("user")
+        .then((reviews) => {
+          console.log(reviews);
 
-        if(!req.user){
-          console.log('no user')
-          return res.render("games/game-details", { game, user: req.user, reviews });
-        }
-        const { _id: userID } = req.user;     
-        User.findById(userID).then((user) => {
-          if (user.gameList.includes(id)) {
-            addCollection = false;
-            addWishlist = false;
-            showWishlist = false;
-          } else if (user.wishlist.includes(id)) {
-            addWishlist = false;
+          if (!req.user) {
+            console.log("no user");
+            return res.render("games/game-details", {
+              game,
+              user: req.user,
+              reviews,
+            });
           }
-          res.render("games/game-details", {
-            game,
-            user: req.user,
-            addWishlist,
-            addCollection,
-            showWishlist,
-            reviews
+          const { _id: userID } = req.user;
+          User.findById(userID).then((user) => {
+            if (user.gameList.includes(id)) {
+              addCollection = false;
+              addWishlist = false;
+              showWishlist = false;
+            } else if (user.wishlist.includes(id)) {
+              addWishlist = false;
+            }
+            res.render("games/game-details", {
+              game,
+              user: req.user,
+              addWishlist,
+              addCollection,
+              showWishlist,
+              reviews,
+            });
           });
-        });
-      })
-      .catch((error) => next(error));
+        })
+        .catch((error) => next(error));
     })
     .catch((error) => next(error));
 });

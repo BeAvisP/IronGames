@@ -14,7 +14,9 @@ router.get("/search", (req, res, next) => {
   const { search } = req.query;
   if (search) {
     Game.find({ name: { $regex: `.*(?i)${search}.*` } })
-      .then((games) => res.render("games/game-list", { games, search, user: req.user }))
+      .then((games) =>
+        res.render("games/game-list", { games, search, user: req.user })
+      )
       .catch((error) => next(error));
   } else {
     res.redirect("/games");

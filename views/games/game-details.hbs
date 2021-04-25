@@ -9,18 +9,18 @@
 </form>
 {{!-- Game added to user collection --}}
 <form action="/game/remove-collection" method="POST">
- <input type="hidden" name="gameID">
+ <input type="hidden" name="gameID" value="{{game._id}}">
  <button type="submit"><i class="fas fa-bookmark"></i></button>
 </form>
 
 {{!-- Game not added to user wishlist --}}
 <form action="/game/add-wishlist" method="POST">
- <input type="hidden" name="gameID">
+ <input type="hidden" name="gameID" value="{{game._id}}">
  <button type="submit"><i class="far fa-heart"></i></button>
 </form>
 {{!-- Game added to user wishlist --}}
 <form action="/game/remove-wishlist" method="POST">
- <input type="hidden" name="gameID">
+ <input type="hidden" name="gameID" value="{{game._id}}">
  <button type="submit"><i class="fas fa-heart"></i></button>
 </form>
 

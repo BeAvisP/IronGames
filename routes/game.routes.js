@@ -20,8 +20,28 @@ router.post('/add-collection', (req, res, next) => {
     if(user){
       const { gameList } = user;
       if(!gameList.includes(gameID)) {
-        gameList.push(gameID);
-        User.findByIdAndUpdate(userID, { gameList }, { new: true })
+        User.findByIdAndUpdate(userID, { $push: { gameList: gameID } }, { new: true })
+        .then((user) => res.redirect(`/game/${gameID}`))
+        .catch(error => next(error));
+      } else {
+        res.redirect(`/game/${gameID}`);
+      }
+    } else {
+      res.redirect(`/game/${gameID}`);
+    }
+  })
+  .catch(error => next(error));
+});
+
+router.post('/remove-collection', (req, res, next) => {
+  const { gameID } = req.body;
+  const { _id: userID } = req.user;
+  User.findById(userID)
+  .then((user) => {
+    if(user){
+      const { gameList } = user;
+      if(gameList.includes(gameID)) {
+        User.findByIdAndUpdate(userID, { $pull: { gameList: gameID } }, { new: true })
         .then((user) => res.redirect(`/game/${gameID}`))
         .catch(error => next(error));
       } else {

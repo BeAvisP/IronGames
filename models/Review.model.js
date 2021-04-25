@@ -3,8 +3,8 @@ const Schema = mongoose.Schema;
 
 const reviewSchema = new Schema(
   {
-    user: [{ type: Schema.Types.ObjectId, ref: "User" }],
-    game: [{ type: Schema.Types.ObjectId, ref: "Game" }],
+    user: { type: Schema.Types.ObjectId, ref: "User" },
+    game: { type: Schema.Types.ObjectId, ref: "Game" },
     comment: { type: String },
     upvote: { type: Number },
     downvote: { type: Number },

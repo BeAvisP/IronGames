@@ -56,3 +56,20 @@
 <p>{{this}}</p>
 {{/each}}
 {{{game.description}}}
+
+{{!-- TODO partial --}}
+{{#if user}}
+<form action="/review/create" method="POST">
+  <input type="hidden" name="gameID" value="{{game._id}}">
+  <textarea name="review" id="review" cols="30" rows="10"></textarea>
+ <button type="submit">Post review</button>
+</form>
+{{/if}}
+
+
+{{!-- TODO partials --}}
+{{#each reviews}}
+{{!-- <a href="/profile/{{user._id}}">{{user.email}}</a> --}}
+{{comment}}
+{{created_at}}
+{{/each}}

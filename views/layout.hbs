@@ -33,18 +33,22 @@
             <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
               <li><a class="dropdown-item" href="/games">Game List</a></li>
             </ul>
+            {{#unless user}}
           <li class="nav-item ">
             <a class="nav-link" href="/signup">Sign Up</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/login">Login</a>
           </li>
+          {{/unless}}
+          {{#if user}}
           <li class="nav-item">
             <a class="nav-link" href="/profile">Profile</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/logout">Logout</a>
           </li>
+          {{/if}}
           </li>
         </ul>
       </div>

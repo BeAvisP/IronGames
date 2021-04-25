@@ -19,13 +19,19 @@ router.post('/add-collection', (req, res, next) => {
   .then((user) => {
     if(user){
       const { gameList } = user;
-      gameList.push(gameID);
-      User.findByIdAndUpdate(userID, { gameList }, { new: true })
-      .then((user) => res.redirect(`/game/${gameID}`))
-      .catch( error => next(error));
+      if(!gameList.includes(gameID)) {
+        gameList.push(gameID);
+        User.findByIdAndUpdate(userID, { gameList }, { new: true })
+        .then((user) => res.redirect(`/game/${gameID}`))
+        .catch(error => next(error));
+      } else {
+        res.redirect(`/game/${gameID}`);
+      }
+    } else {
+      res.redirect(`/game/${gameID}`);
     }
   })
   .catch(error => next(error));
-})
+});
 
 module.exports = router;

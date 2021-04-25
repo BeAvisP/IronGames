@@ -28,11 +28,13 @@ const privateRouter = require("./routes/private.routes");
 const gamesRouter = require("./routes/games.routes");
 const gameRouter = require("./routes/game.routes");
 const reviewRouter = require("./routes/review.routes");
+const userRouter = require("./routes/user.routes");
 app.use("/", index);
 app.use("/", authRouter);
 app.use("/profile", privateRouter);
 app.use("/games", gamesRouter);
 app.use("/game", gameRouter);
 app.use("/review", reviewRouter);
+app.use("/user", userRouter);
 
 module.exports = app;

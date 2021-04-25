@@ -3,3 +3,18 @@
 
 
 <a href="/profile/edit" rel="noopener noreferrer">Edit</a>
+
+<br>
+{{#each user.gameList}}
+  <a href="/game/{{id}}">
+  <img src="{{background_image}}" alt="" style= 'width: 250px;'>
+  <p>{{name}}</p>
+  </a>
+{{/each}}
+
+
+
+
+
+
+

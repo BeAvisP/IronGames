@@ -8,7 +8,7 @@ const User =  require('../models/User.model');
 router.get('/:id', (req, res, next) => {
   const { id } = req.params;
   Game.findById(id)
-  .then(game => res.render('games/game-details', { game }))
+  .then(game => res.render('games/game-details', { game, user: req.user }))
   .catch(error => next(error));  
 });
 

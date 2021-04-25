@@ -3,26 +3,36 @@
 
 {{!-- REFACTOR IN 2 FORMS READING FROM USER INFO --}}
 {{!-- Game not added to user collection --}}
+{{#if addCollection}}
 <form action="/game/add-collection" method="POST">
  <input type="hidden" name="gameID" value="{{game._id}}">
  <button type="submit"><i class="far fa-bookmark"></i></button>
 </form>
+{{/if}}
 {{!-- Game added to user collection --}}
+{{#unless addCollection}}
 <form action="/game/remove-collection" method="POST">
  <input type="hidden" name="gameID" value="{{game._id}}">
  <button type="submit"><i class="fas fa-bookmark"></i></button>
 </form>
+{{/unless}}
 
 {{!-- Game not added to user wishlist --}}
+{{#if showWishlist}}
+{{#if addWishlist}}
 <form action="/game/add-wishlist" method="POST">
  <input type="hidden" name="gameID" value="{{game._id}}">
  <button type="submit"><i class="far fa-heart"></i></button>
 </form>
+{{/if}}
 {{!-- Game added to user wishlist --}}
+{{#unless addWishlist}}
 <form action="/game/remove-wishlist" method="POST">
  <input type="hidden" name="gameID" value="{{game._id}}">
  <button type="submit"><i class="fas fa-heart"></i></button>
 </form>
+{{/unless}}
+{{/if}}
 
 {{!-- INFO WE GET FROM THE DDBB --}}
 {{game.released}}

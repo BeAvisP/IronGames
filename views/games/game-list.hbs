@@ -1,13 +1,5 @@
 <div class="container">
-  <div class="row justify-content-center">
-    <div class="col-6">
-      <form action="/games/search" method="get" class="d-flex">
-        <input type="text" class="form-control" name="search" placeholder="Search..." value="{{search}}">
-        <button type="submit" class="btn btn-primary">Search</button>
-      </form>
-    </div>
-
-  </div>
+  {{> searchForm }}
 
   <div class="d-flex flex-wrap justify-content-center">
     {{#each games}}

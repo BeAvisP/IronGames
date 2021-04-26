@@ -14,7 +14,7 @@ router.get("/:id/collection", (req, res) => {
 router.get("/:id/wishlist", (req, res) => {
   const { id } = req.params;
   User.findById(id)
-    .populate("wishList")
+    .populate("wishlist")
     .then((user) => {
       res.render("user/user-wishlist", { user, sessionUser: req.user });
     });

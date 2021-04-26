@@ -41,7 +41,7 @@ router.post("/signup", (req, res) => {
           if (error) {
             next(error);
           }
-          return res.redirect("/profile");
+          return res.redirect(`/user/${newUser._id}`);
         });
       })
       .catch((error) => {

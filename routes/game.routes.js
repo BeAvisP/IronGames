@@ -50,6 +50,7 @@ router.get("/:id", (req, res, next) => {
     .catch((error) => next(error));
 });
 
+// TODO isLoggedIn
 // Add game to user collection
 router.post("/add-collection", (req, res, next) => {
   const { gameID } = req.body;
@@ -57,7 +58,7 @@ router.post("/add-collection", (req, res, next) => {
   User.findById(userID)
     .then((user) => {
       if (user) {
-        const { gameList, wishlist } = user;
+        const { gameList } = user;
         if (!gameList.includes(gameID)) {
           User.findByIdAndUpdate(
             userID,

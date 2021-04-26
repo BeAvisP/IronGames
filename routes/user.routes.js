@@ -6,9 +6,17 @@ router.get("/:id/collection", (req, res) => {
   const { id } = req.params;
   User.findById(id)
     .populate("gameList")
-    .populate("wishList")
     .then((user) => {
       res.render("user/user-collection", { user, sessionUser: req.user });
+    });
+});
+
+router.get("/:id/wishlist", (req, res) => {
+  const { id } = req.params;
+  User.findById(id)
+    .populate("wishList")
+    .then((user) => {
+      res.render("user/user-wishlist", { user, sessionUser: req.user });
     });
 });
 

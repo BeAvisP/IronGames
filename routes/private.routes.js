@@ -10,7 +10,7 @@ function isLoggedIn(req, res, next) {
   }
 }
 router.get("/", isLoggedIn, (req, res, next) => {
-  res.render("auth/profile", { user: req.user });
+  res.render("user/profile", { user: req.user });
 });
 
 //Edit Profile
@@ -21,7 +21,7 @@ router.get("/edit", isLoggedIn, (req, res) => {
       res.render("user/user-edit", { user });
     })
     .catch((error) => {
-      res.render("auth/profile");
+      res.render("user/profile");
     });
 });
 router.post("/edit", (req, res) => {
@@ -32,7 +32,7 @@ router.post("/edit", (req, res) => {
       res.redirect("/profile");
     })
     .catch((error) => {
-      res.render("auth/profile");
+      res.render("user/profile");
     });
 });
 

@@ -4,14 +4,22 @@
 
 <a href="/profile/edit" rel="noopener noreferrer">Edit</a>
 
-<br>
+<hr>
+<h3>Game List</h3>
 {{#each user.gameList}}
   <a href="/game/{{id}}">
   <img src="{{background_image}}" alt="" style= 'width: 250px;'>
   <p>{{name}}</p>
   </a>
 {{/each}}
-
+<hr>
+<h3>Wishlist</h3>
+{{#each user.wishlist}}
+  <a href="/game/{{id}}">
+  <img src="{{background_image}}" alt="" style= 'width: 250px;'>
+  <p>{{name}}</p>
+  </a>
+{{/each}}
 
 
 

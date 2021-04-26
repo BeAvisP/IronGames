@@ -53,7 +53,14 @@ router.post("/signup", (req, res) => {
 });
 
 router.get("/login", (req, res) => {
-  res.render("auth/login", { errorMessage: req.flash("error")[0] });
+  let errorMessage = req.flash('error')[0];
+  const { email, password } = req.body;
+  if ( (!email || !password) && errorMessage)  {
+    return res.render("auth/login", {
+      errorMessage: "Username and password are required",
+    });
+  }
+  res.render("auth/login");
 });
 
 router.post(

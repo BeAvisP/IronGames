@@ -30,12 +30,12 @@ module.exports = (app) => {
           .then((user) => {
             if (!user) {
               return done(null, false, {
-                error: "Incorrect email or password",
+                errorMessage: "Incorrect email or password",
               });
             }
             if (!bcrypt.compareSync(password, user.password)) {
               return done(null, false, {
-                error: "Incorrect email or password",
+                errorMessage: "Incorrect email or password",
               });
             }
             done(null, user);

@@ -10,7 +10,7 @@ function isLoggedIn(req, res, next) {
   }
 }
 router.get("/", isLoggedIn, (req, res, next) => {
-  res.render("user/profile", { user: req.user });
+  res.render("user/profile", { sessionUser: req.user });
 });
 
 //Edit Profile

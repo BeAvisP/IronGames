@@ -22,7 +22,7 @@ router.get("/:id", (req, res, next) => {
             console.log("no user");
             return res.render("games/game-details", {
               game,
-              user: req.user,
+              sessionUser: req.user,
               reviews,
             });
           }
@@ -37,7 +37,7 @@ router.get("/:id", (req, res, next) => {
             }
             res.render("games/game-details", {
               game,
-              user: req.user,
+              sessionUser: req.user,
               addWishlist,
               addCollection,
               showWishlist,

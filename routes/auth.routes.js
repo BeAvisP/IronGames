@@ -53,7 +53,6 @@ router.post("/signup", (req, res) => {
 });
 
 router.get("/login", (req, res) => {
-  console.log(req.flash());
   res.render("auth/login", { errorMessage: req.flash("error")[0] });
 });
 

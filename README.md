@@ -47,7 +47,7 @@ Project Module 2 is an online database of information related to video games con
 | `GET`      | `/profile/edit`                    | Private route. Render the `profile-edit` view.               |                                                          |
 | `POST`     | `/profile/edit`                    | Private route. Sends `profile-edit` info to server and Updates the user in DDBB. |  { username, location, description, genres, socia.facebook, social.steam, social.twitch, social.twitter }                                                        |
 | `POST`     | `/logout`                          | Private route. User logout.                                  |                                                          |
-| `GET`      | `/profile/:userID/games`           | Renders `user-games` view.                                   |                                                          |
+| `GET`      | `/profile/:userID/user-collection`           | Renders `user-collection` view.                                   |                                                          |
 | `GET`      | `/profile/:userID/wishlist`        | Renders `user-wishlist` view.                                |                                                          |
 | `GET`      | `/games/search`                    | Renders filtered `game-list` view.                                    |                                                          |
 | `GET`      | `/games`                           | Renders `game-list` view.                                    |                                                          |

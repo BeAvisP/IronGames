@@ -58,7 +58,7 @@
 {{{game.description}}}
 
 {{!-- TODO partial --}}
-{{#if user}}
+{{#if sessionUser}}
 <form action="/review/create" method="POST">
   <input type="hidden" name="gameID" value="{{game._id}}">
   <textarea name="review" id="review" cols="30" rows="10"></textarea>

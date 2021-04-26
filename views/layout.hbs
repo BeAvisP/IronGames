@@ -29,7 +29,7 @@
           <li class="nav-item">
             <a class="nav-link" aria-current="page" href="/games">Game List</a>
           </li>
-          {{#unless user}}
+          {{#unless sessionUser}}
           <li class="nav-item ">
             <a class="nav-link" href="/signup">Sign Up</a>
           </li>
@@ -38,7 +38,7 @@
           </li>
           {{/unless}}
 
-          {{#if user}}
+          {{#if sessionUser}}
           <span class="text-white-50">Welcome {{user.name}}</span>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"

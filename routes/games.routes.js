@@ -6,7 +6,7 @@ const Game = require("../models/Game.model");
 
 router.get("/", (req, res, next) => {
   Game.find({})
-    .then((games) => res.render("games/game-list", { games, user: req.user }))
+    .then((games) => res.render("games/game-list", { games, sessionUser: req.user }))
     .catch((error) => next(error));
 });
 
@@ -15,7 +15,7 @@ router.get("/search", (req, res, next) => {
   if (search) {
     Game.find({ name: { $regex: `.*(?i)${search}.*` } })
       .then((games) =>
-        res.render("games/game-list", { games, search, user: req.user })
+        res.render("games/game-list", { games, search, sessionUser: req.user })
       )
       .catch((error) => next(error));
   } else {

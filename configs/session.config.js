@@ -7,7 +7,7 @@ module.exports = (app) => {
       secret: process.env.SECRET,
       resave: true,
       saveUninitialized: false,
-      cookie: { maxAge: 3600000 },
+      cookie: { maxAge: 1000 * 60 * 60 * 24 * 7 },
       store: MongoStore.create({ mongoUrl: process.env.MONGOBDURL }),
     })
   );

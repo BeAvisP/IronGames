@@ -1,1 +1,15 @@
 <h2>Welcome Game</h2>
+
+<h3>Game List</h3>
+<div class="d-flex flex-wrap justify-content-center">
+{{#each user.gameList}}
+  {{> gameCard }}   
+{{/each}}
+</div>
+<hr>
+<h3>Wishlist</h3>
+<div class="d-flex flex-wrap justify-content-center">
+{{#each user.wishlist}}
+  {{> gameCard }}   
+{{/each}}
+</div>

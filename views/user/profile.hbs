@@ -3,23 +3,24 @@
 
 
 <a href="/profile/edit" rel="noopener noreferrer">Edit</a>
-<a href="{{user.id}}/edit/gameList" rel="noopener noreferrer">Game List</a>
+
+<a href="/user/{{user._id}}/collection" rel="noopener noreferrer">Game List</a>
+
 <hr>
+
 <h3>Game List</h3>
+<div class="d-flex flex-wrap justify-content-center">
 {{#each user.gameList}}
-  <a href="/game/{{id}}">
-  <img src="{{background_image}}" alt="" style= 'width: 250px;'>
-  <p>{{name}}</p>
-  </a>
+  {{> gameCard }}   
 {{/each}}
+</div>
 <hr>
 <h3>Wishlist</h3>
+<div class="d-flex flex-wrap justify-content-center">
 {{#each user.wishlist}}
-  <a href="/game/{{id}}">
-  <img src="{{background_image}}" alt="" style= 'width: 250px;'>
-  <p>{{name}}</p>
-  </a>
+  {{> gameCard }}   
 {{/each}}
+</div>
 
 
 

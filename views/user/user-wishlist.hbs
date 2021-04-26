@@ -1,6 +1,6 @@
 <h3>Wishlist</h3>
 <div class="d-flex flex-wrap justify-content-center">
-  {{#each mappedGames}}
+  {{#each mappedWishlist}}
   {{> gameCard }}
   {{#if authUser}}
   <form action="/game/remove-wishlist" method="POST">

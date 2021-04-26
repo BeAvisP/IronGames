@@ -24,19 +24,19 @@ router.get("/:id/collection", (req, res) => {
 //Profile Wishlist
 router.get("/:id/wishlist", (req, res) => {
   let authUser = false;
-  let mappedGames = [];
+  let mappedWishlist = [];
   const { id } = req.params;
   User.findById(id)
     .populate("wishlist")
     .then((user) => {
       if(JSON.stringify(req.user._id)===JSON.stringify(id)){
         authUser = true;
-          mappedGames = user.wishlist.map((wishlist)=> {
+          mappedWishlist = user.wishlist.map((wishlist)=> {
           wishlist.authUser = true;
           return wishlist;
         });
       }
-      res.render("user/user-wishlist", { user, sessionUser: req.user, authUser, mappedGames });
+      res.render("user/user-wishlist", { user, sessionUser: req.user, authUser, mappedWishlist });
     });
 });
 

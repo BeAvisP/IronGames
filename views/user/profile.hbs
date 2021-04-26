@@ -3,27 +3,24 @@
 
 
 <a href="/profile/edit" rel="noopener noreferrer">Edit</a>
+<hr>
+<form action="/profile/{{user._id}}/delete" method="POST">
+  <button type="submit">Delete</button>
+</form>
 
 <a href="/user/{{user._id}}/collection" rel="noopener noreferrer">Game List</a>
-
 <hr>
 
 <h3>Game List</h3>
 <div class="d-flex flex-wrap justify-content-center">
-{{#each user.gameList}}
-  {{> gameCard }}   
-{{/each}}
+  {{#each user.gameList}}
+  {{> gameCard }}
+  {{/each}}
 </div>
 <hr>
 <h3>Wishlist</h3>
 <div class="d-flex flex-wrap justify-content-center">
-{{#each user.wishlist}}
-  {{> gameCard }}   
-{{/each}}
+  {{#each user.wishlist}}
+  {{> gameCard }}
+  {{/each}}
 </div>
-
-
-
-
-
-

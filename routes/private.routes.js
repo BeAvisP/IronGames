@@ -13,6 +13,7 @@ router.get("/", isLoggedIn, (req, res, next) => {
   res.render("user/profile", { sessionUser: req.user });
 });
 
+
 //Edit Profile
 router.get("/edit", isLoggedIn, (req, res) => {
   const { _id: id } = req.user;
@@ -24,6 +25,7 @@ router.get("/edit", isLoggedIn, (req, res) => {
       res.render("user/profile");
     });
 });
+
 router.post("/edit", (req, res) => {
   const { city, description } = req.body;
   const { _id: id } = req.user;
@@ -34,6 +36,15 @@ router.post("/edit", (req, res) => {
     .catch((error) => {
       res.render("user/profile");
     });
+});
+
+//Delete
+router.post("/:id/delete", isLoggedIn, (req, res) => {
+  User.findByIdAndRemove(req.params.id)
+  .then(() => {
+    res.redirect("/");
+  })
+  .catch(error => console.error(error))
 });
 
 module.exports = router;

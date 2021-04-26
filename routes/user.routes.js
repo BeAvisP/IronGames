@@ -12,6 +12,7 @@ router.get("/:id/collection", (req, res) => {
     });
 });
 
+
 //Profile gamelist and wishlist
 router.get("/:id", (req, res) => {
   const { id } = req.params;
@@ -22,5 +23,6 @@ router.get("/:id", (req, res) => {
       res.render("user/profile", { user, sessionUser: req.user });
     });
 });
+
 
 module.exports = router;

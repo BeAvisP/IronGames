@@ -5,7 +5,7 @@ const userSchema = new Schema({
   name: { type: String, require: true, unique: true },
   email: { type: String, require: true, unique: true },
   password: { type: String, require: true },
-  city: {type: String},
+  city: { type: String },
   profileImage: { type: String },
   avatarProfile: { type: String /* default: */ },
   description: { type: String, maxlength: 280 },
@@ -18,7 +18,6 @@ const userSchema = new Schema({
     steam: { type: String },
   },
   genres: [],
-  location: { type: String },
 });
 
 const User = mongoose.model("User", userSchema);

@@ -2,11 +2,13 @@
 <H2>{{user.name}}</H2>
 
 
+{{#if authUser}}
 <a href="/profile/edit" rel="noopener noreferrer">Edit</a>
 <hr>
 <form action="/profile/{{user._id}}/delete" method="POST">
   <button type="submit">Delete</button>
 </form>
+{{/if}}
 
 <a href="/user/{{user._id}}/collection" rel="noopener noreferrer">Game List</a>
 <hr>
@@ -22,6 +24,6 @@
 <h3>Wishlist</h3>
 <div class="d-flex flex-wrap justify-content-center">
   {{#each user.wishlist}}
-  {{> gameCard }}
+  {{> gameCard}}
   {{/each}}
 </div>

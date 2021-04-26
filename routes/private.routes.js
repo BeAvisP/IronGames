@@ -26,6 +26,7 @@ router.get("/edit", isLoggedIn, (req, res) => {
     });
 });
 
+//Profile edit user
 router.post("/edit", (req, res) => {
   const { city, description } = req.body;
   const { _id: id } = req.user;

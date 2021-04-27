@@ -51,6 +51,9 @@ router.get("/:id", (req, res, next) => {
 // TODO isLoggedIn
 // Add game to user collection
 router.post("/add-collection", (req, res, next) => {
+  const backURL=req.header('Referer');
+  const host = req.headers.host;
+  const redirectURL = backURL.split(`http://${host}`)[1];
   const { gameID } = req.body;
   const { _id: userID } = req.user;
   User.findById(userID)
@@ -63,13 +66,13 @@ router.post("/add-collection", (req, res, next) => {
             { $push: { gameList: gameID }, $pull: { wishlist: gameID } },
             { new: true }
           )
-            .then((user) => res.redirect(`/game/${gameID}`))
+            .then((user) => res.redirect(redirectURL))
             .catch((error) => next(error));
         } else {
-          res.redirect(`/game/${gameID}`);
+          res.redirect(redirectURL);
         }
       } else {
-        res.redirect(`/game/${gameID}`);
+        res.redirect(redirectURL);
       }
     })
     .catch((error) => next(error));
@@ -77,6 +80,9 @@ router.post("/add-collection", (req, res, next) => {
 
 // Remove game from user collection
 router.post("/remove-collection", (req, res, next) => {
+  const backURL=req.header('Referer');
+  const host = req.headers.host;
+  const redirectURL = backURL.split(`http://${host}`)[1];
   const { gameID } = req.body;
   const { _id: userID } = req.user;
   User.findById(userID)
@@ -89,13 +95,13 @@ router.post("/remove-collection", (req, res, next) => {
             { $pull: { gameList: gameID } },
             { new: true }
           )
-            .then((user) => res.redirect(`/game/${gameID}`))
+            .then((user) => res.redirect(redirectURL))
             .catch((error) => next(error));
         } else {
-          res.redirect(`/game/${gameID}`);
+          res.redirect(redirectURL);
         }
       } else {
-        res.redirect(`/game/${gameID}`);
+        res.redirect(redirectURL);
       }
     })
     .catch((error) => next(error));
@@ -103,6 +109,9 @@ router.post("/remove-collection", (req, res, next) => {
 
 // Add game to user wishlist
 router.post("/add-wishlist", (req, res, next) => {
+  const backURL=req.header('Referer');
+  const host = req.headers.host;
+  const redirectURL = backURL.split(`http://${host}`)[1];
   const { gameID } = req.body;
   const { _id: userID } = req.user;
   User.findById(userID)
@@ -115,13 +124,13 @@ router.post("/add-wishlist", (req, res, next) => {
             { $push: { wishlist: gameID } },
             { new: true }
           )
-            .then((user) => res.redirect(`/game/${gameID}`))
+            .then((user) => res.redirect(redirectURL))
             .catch((error) => next(error));
         } else {
-          res.redirect(`/game/${gameID}`);
+          res.redirect(redirectURL);
         }
       } else {
-        res.redirect(`/game/${gameID}`);
+        res.redirect(redirectURL);
       }
     })
     .catch((error) => next(error));
@@ -129,6 +138,9 @@ router.post("/add-wishlist", (req, res, next) => {
 
 // Remove game from user wishlist
 router.post("/remove-wishlist", (req, res, next) => {
+  const backURL=req.header('Referer');
+  const host = req.headers.host;
+  const redirectURL = backURL.split(`http://${host}`)[1];
   const { gameID } = req.body;
   const { _id: userID } = req.user;
   User.findById(userID)
@@ -141,13 +153,13 @@ router.post("/remove-wishlist", (req, res, next) => {
             { $pull: { wishlist: gameID } },
             { new: true }
           )
-            .then((user) => res.redirect(`/game/${gameID}`))
+            .then((user) => res.redirect(redirectURL))
             .catch((error) => next(error));
         } else {
-          res.redirect(`/game/${gameID}`);
+          res.redirect(redirectURL);
         }
       } else {
-        res.redirect(`/game/${gameID}`);
+        res.redirect(redirectURL);
       }
     })
     .catch((error) => next(error));

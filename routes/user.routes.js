@@ -45,8 +45,8 @@ router.get("/:id", (req, res) => {
   let authUser = false;
   const { id } = req.params;
   User.findById(id)
-    .populate("gameList")
-    .populate("wishlist")
+    .populate({path:"gameList", options:{limit: 5}})
+    .populate({path:"wishlist", options:{limit: 5}})
     .then((user) => {
       if(JSON.stringify(req.user._id) === JSON.stringify(id)){
         authUser = true;

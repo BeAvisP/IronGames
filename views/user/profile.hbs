@@ -6,10 +6,10 @@
 <p>{{user.description}}</p>
 <p>{{user.city}}</p>
 <hr>
-{{#each user.description}}
-  <p>{{this}}</p>
-{{/each}}
 
+<p>{{user.social.facebook}}</p>
+
+<hr>
 {{#if authUser}}
 <a href="/profile/edit" rel="noopener noreferrer">Edit</a>
 <hr>

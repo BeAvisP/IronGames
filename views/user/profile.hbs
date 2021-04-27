@@ -1,6 +1,11 @@
 <h2>Welcome</h2>
 <H2>{{user.name}}</H2>
-
+<p>{{user.description}}</p>
+<p>{{user.city}}</p>
+<hr>
+{{#each user.description}}
+  <p>{{this}}</p>
+{{/each}}
 
 {{#if authUser}}
 <a href="/profile/edit" rel="noopener noreferrer">Edit</a>

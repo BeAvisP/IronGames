@@ -32,7 +32,7 @@ router.post("/edit", (req, res) => {
   const { _id: id } = req.user;
   User.findByIdAndUpdate(id, { city, description })
     .then((user) => {
-      res.redirect("/profile");
+      res.redirect(`/user/${user._id}`);
     })
     .catch((error) => {
       res.render("user/profile");

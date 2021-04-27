@@ -1,8 +1,6 @@
 const express = require("express");
 const router = express.Router();
 const Review = require("../models/Review.model");
-const Game = require("../models/Game.model");
-const User = require("../models/User.model");
 
 //TODO IsLoggedIn
 router.post("/create", (req, res, next) => {

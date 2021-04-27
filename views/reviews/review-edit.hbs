@@ -1,0 +1,5 @@
+<form action="/review/{{_id}}/edit" method="POST">
+  <input type="hidden" name="gameID" value="{{game._id}}">
+  <textarea type="textarea" name="review" id="review" cols="30" rows="10">{{comment}}</textarea>
+ <button type="submit">Post review</button>
+</form>

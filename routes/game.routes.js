@@ -8,40 +8,38 @@ const Review = require("../models/Review.model");
 
 router.get("/:id", (req, res, next) => {
   const { id } = req.params;
-  let addCollection = true;
-  let addWishlist = true;
-  let showWishlist = true;
+  let inCollection = false;
+  let inWishlist = false;
   Game.findById(id)
     .then((game) => {
       Review.find({ game: id })
         .populate("user")
         .then((reviews) => {
-          console.log(reviews);
-
           if (!req.user) {
-            console.log("no user");
             return res.render("games/game-details", {
               game,
               sessionUser: req.user,
               reviews,
             });
           }
+          const mappedReviews = reviews.map((review) => {
+            review.sessionUserRev =
+              JSON.stringify(review.user._id) === JSON.stringify(req.user._id);
+            return review;
+          });
           const { _id: userID } = req.user;
           User.findById(userID).then((user) => {
             if (user.gameList.includes(id)) {
-              addCollection = false;
-              addWishlist = false;
-              showWishlist = false;
+              inCollection = true;              
             } else if (user.wishlist.includes(id)) {
-              addWishlist = false;
+              inWishlist = true;
             }
             res.render("games/game-details", {
               game,
               sessionUser: req.user,
-              addWishlist,
-              addCollection,
-              showWishlist,
-              reviews,
+              inCollection,
+              inWishlist,
+              reviews: mappedReviews,
             });
           });
         })

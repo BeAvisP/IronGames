@@ -6,7 +6,7 @@
   {{> gameCard }}
   {{#if authUser}}
 <form action="/game/remove-collection" method="POST">
- <input type="hidden" name="gameID" value="{{_id}}">
+ <input type="hidden" class="hide" name="gameID" value="{{_id}}">
  <button type="submit"><i class="fas fa-heart"></i></button>
 </form>
 {{/if}}   

@@ -32,14 +32,15 @@ router.post("/edit", uploader.single('profileImage'), (req, res) => {
   const { city, description } = req.body;
   const { _id: id } = req.user;
   console.log(req.file)
-  User.findByIdAndUpdate(id, { city, description })
+  if(req.file){
+  User.findByIdAndUpdate(id, { city, description, profile_pic: req.file.path }, {new: true})
     .then((user) => {
       res.redirect(`/user/${user._id}`);
     })
     .catch((error) => {
       res.render("user/profile");
     });
-});
+}});
 
 //Delete
 router.post("/:id/delete", isLoggedIn, (req, res) => {

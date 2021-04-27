@@ -42,27 +42,21 @@ router.post("/:id/downvote", (req, res, next) => {
 //TODO IsLoggedIn
 router.get("/:id/edit", (req, res, next) => {
   const backURL=req.header('Referer');
-  const origin = req.headers.host
-  console.log(backURL);
-  console.log(origin);
-  
+  const host = req.headers.host;
+  const redirectURL = backURL.split(`http://${host}`)[1];
   const { id } = req.params;
   Review.findById(id)
-    .then((review) => res.render('reviews/review-edit', review ))
+    .then((review) => res.render('reviews/review-edit', { review, redirectURL, sessionUser: req.user }))
     .catch((error) => next(error));
 });
 
 //TODO IsLoggedIn
 router.post("/:id/edit", (req, res, next) => {
-  const { review: comment } = req.body;
+  const { review: comment, redirect } = req.body;
   const { id } = req.params;
-  const backURL=req.header('Referer');
-  const url=req.originalUrl;
-  console.log(backURL);
-  console.log(url);
   Review.findByIdAndUpdate(id, { comment }, { new: true })
     .then((review) => {
-      res.redirect(`/game/${gameID}`)
+      res.redirect(redirect);
     })
     .catch((error) => next(error));
 });

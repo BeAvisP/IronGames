@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const User = require("../models/User.model");
+const uploader = require('../configs/cloudinary.config');
 
 function isLoggedIn(req, res, next) {
   if (req.isAuthenticated()) {
@@ -27,9 +28,10 @@ router.get("/edit", isLoggedIn, (req, res) => {
 });
 
 //Profile edit user
-router.post("/edit", (req, res) => {
+router.post("/edit", uploader.single('profileImage'), (req, res) => {
   const { city, description } = req.body;
   const { _id: id } = req.user;
+  console.log(req.file)
   User.findByIdAndUpdate(id, { city, description })
     .then((user) => {
       res.redirect(`/user/${user._id}`);

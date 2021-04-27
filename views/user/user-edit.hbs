@@ -1,8 +1,8 @@
 <h2>Welcome to edit</h2>
 
-<form action="/profile/edit" method="POST">
+<form action="/profile/edit" method="POST" enctype="multipart/form-data">
   <label for="profileImage">Image</label>
-  <input type="image" name='profileImage'>
+  <input type="file" name='profileImage'>
 <hr>
   <label for="city">City</label>
   <input type="text" name='city' value="{{user.city}}">

@@ -19,10 +19,10 @@ router.get("/edit", isLoggedIn, (req, res) => {
   const { _id: id } = req.user;
   User.findById(id)
     .then((user) => {
-      res.render("user/user-edit", { user });
+      res.render("user/user-edit", { sessionUser: req.user });
     })
     .catch((error) => {
-      res.render("user/profile");
+      res.render("user/profile", { sessionUser: req.user });
     });
 });
 
@@ -35,7 +35,7 @@ router.post("/edit", (req, res) => {
       res.redirect("/profile");
     })
     .catch((error) => {
-      res.render("user/profile");
+      res.render("user/profile", { sessionUser: req.user });
     });
 });
 

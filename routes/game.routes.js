@@ -3,6 +3,7 @@ const router = express.Router();
 const Game = require("../models/Game.model");
 const User = require("../models/User.model");
 const Review = require("../models/Review.model");
+const { isLoggedIn } = require("../middlewares/auth");
 
 /* GET Games Page */
 
@@ -30,7 +31,7 @@ router.get("/:id", (req, res, next) => {
           const { _id: userID } = req.user;
           User.findById(userID).then((user) => {
             if (user.gameList.includes(id)) {
-              inCollection = true;              
+              inCollection = true;
             } else if (user.wishlist.includes(id)) {
               inWishlist = true;
             }
@@ -48,10 +49,9 @@ router.get("/:id", (req, res, next) => {
     .catch((error) => next(error));
 });
 
-// TODO isLoggedIn
 // Add game to user collection
-router.post("/add-collection", (req, res, next) => {
-  const backURL=req.header('Referer');
+router.post("/add-collection", isLoggedIn, (req, res, next) => {
+  const backURL = req.header("Referer");
   const host = req.headers.host;
   const redirectURL = backURL.split(`http://${host}`)[1];
   const { gameID } = req.body;
@@ -79,8 +79,8 @@ router.post("/add-collection", (req, res, next) => {
 });
 
 // Remove game from user collection
-router.post("/remove-collection", (req, res, next) => {
-  const backURL=req.header('Referer');
+router.post("/remove-collection", isLoggedIn, (req, res, next) => {
+  const backURL = req.header("Referer");
   const host = req.headers.host;
   const redirectURL = backURL.split(`http://${host}`)[1];
   const { gameID } = req.body;
@@ -108,8 +108,8 @@ router.post("/remove-collection", (req, res, next) => {
 });
 
 // Add game to user wishlist
-router.post("/add-wishlist", (req, res, next) => {
-  const backURL=req.header('Referer');
+router.post("/add-wishlist", isLoggedIn, (req, res, next) => {
+  const backURL = req.header("Referer");
   const host = req.headers.host;
   const redirectURL = backURL.split(`http://${host}`)[1];
   const { gameID } = req.body;
@@ -137,8 +137,8 @@ router.post("/add-wishlist", (req, res, next) => {
 });
 
 // Remove game from user wishlist
-router.post("/remove-wishlist", (req, res, next) => {
-  const backURL=req.header('Referer');
+router.post("/remove-wishlist", isLoggedIn, (req, res, next) => {
+  const backURL = req.header("Referer");
   const host = req.headers.host;
   const redirectURL = backURL.split(`http://${host}`)[1];
   const { gameID } = req.body;

@@ -22,4 +22,8 @@ h1 {
     color: rgba(255, 255, 255, 0.55);
     background-color: #444b52; }
 
+.hide {
+  visibility: hidden;
+  opacity: 0; }
+
 /*# sourceMappingURL=style.css.map */

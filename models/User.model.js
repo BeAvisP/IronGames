@@ -17,6 +17,7 @@ const userSchema = new Schema({
     twiteer: { type: String },
     steam: { type: String },
   },
+  profile_pic: {type: String, default:'https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png'},
   genres: [],
 });
 

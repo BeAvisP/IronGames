@@ -95,8 +95,4 @@ router.post("/:id/delete", isLoggedIn, (req, res, next) => {
     .catch((error) => next(error));
 });
 
-// const findReviewByID = (id) => {
-//   return ;
-// };
-
 module.exports = router;

@@ -55,7 +55,6 @@ const getAllGames = (response, repeat) => {
     });
   });
   if (response.data.next && repeat) {
-    console.log("repeat");
     axios
       .get(response.data.next)
       .then((response) => getAllGames(response, true));

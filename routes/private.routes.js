@@ -22,7 +22,8 @@ router.get("/edit", isLoggedIn, (req, res) => {
 
 //Profile edit user
 router.post(
-  "/edit", isLoggedIn,
+  "/edit",
+  isLoggedIn,
   uploader.fields([
     { name: "profileImage", maxCount: 1 },
     { name: "profile_Background", maxCount: 1 },
@@ -30,7 +31,6 @@ router.post(
   (req, res) => {
     const { user, city, description, facebook, twitter, steam } = req.body;
     const { _id: id } = req.user;
-    console.log('holaaaaaaaa', req.body);
     if (req.files) {
       User.findByIdAndUpdate(
         id,
@@ -38,16 +38,21 @@ router.post(
           name: user,
           city,
           description,
-          social:{steam: steam, twitter: twitter, facebook: facebook },
-          profile_pic: req.files.profileImage ? req.files.profileImage[0].path: req.user.profile_pic,
-          profile_Background: req.files.profile_Background ? req.files.profile_Background[0].path: req.user.profile_Background,
+          social: { steam: steam, twitter: twitter, facebook: facebook },
+          profile_pic: req.files.profileImage
+            ? req.files.profileImage[0].path
+            : req.user.profile_pic,
+          profile_Background: req.files.profile_Background
+            ? req.files.profile_Background[0].path
+            : req.user.profile_Background,
         },
         { new: true }
       )
         .then((user) => {
           res.redirect(`/user/${user._id}`);
-        }).catch(error => console.error(error))
-    }   
+        })
+        .catch((error) => console.error(error));
+    }
   }
 );
 

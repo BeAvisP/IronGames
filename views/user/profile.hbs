@@ -40,16 +40,17 @@
     {{!-- Info Profile --}}
     <div class="info">
       <H2>{{user.name}}</H2>
+    <div class="info__description">
       <p>{{user.description}}</p>
-      <p>{{user.city}}</p>
-      <p>{{user.social.facebook}}</p>
-      <p>{{user.social.twitter}}</p>
-      <p>{{user.social.steam}}</p>
+    </div> 
+      <p>Location: {{user.city}}📍</p>
+      <div class="info__social">
+        <p>{{user.social.facebook}}</p>
+        <p>{{user.social.twitter}}</p>
+        <p>{{user.social.steam}}</p>
+      </div>
     </div>
    
-   
-   
-
     <hr>
     <div class="profile__gamelist">
     <h3>Game List</h3>

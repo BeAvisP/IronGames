@@ -38,6 +38,16 @@ body {
     .navbar .dropdown-menu .dropdown-item:hover {
       background-color: #cf000070; }
 
+/* Sign-up and Login */
+.signup_container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end; }
+
+.image__poster {
+  padding-top: 30px;
+  margin: 0 auto; }
+
 /* Profile */
 .container__profile {
   background-color: #1f1f1f;
@@ -65,13 +75,27 @@ body {
 .info h2 {
   font-size: 8rem; }
 
+.info__description {
+  margin: 0 500px;
+  padding: 20px 50px;
+  border: 2px inset #111;
+  align-items: center;
+  text-align: left; }
+
 .info p {
   margin: 0 auto;
   padding: 5px; }
 
+.info__social {
+  border: 2px solid red;
+  display: flex;
+  justify-content: flex-end;
+  margin-left: 1300px; }
+
+/* Profile */
 .edit__profile {
   display: flex;
-  background-color: #cf0000; }
+  background-color: #990001; }
 
 .edit__profile a {
   color: #fff;
@@ -91,7 +115,12 @@ body {
   margin: 0 20px; }
 
 .buttom__profile--delete {
-  padding: 5px; }
+  margin-right: 5px;
+  padding: 5px;
+  background: #cf0000;
+  color: inherit;
+  border: #990001;
+  box-shadow: 3px 7px 10px 8px #111; }
 
 .hide {
   display: none;

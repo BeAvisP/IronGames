@@ -59,7 +59,12 @@
 {{!-- TODO partials --}}
 <div class="review-container">
 {{#each reviews}}
-<a href="/profile/{{user._id}}">{{user.email}}</a>
+{{#if user._id}}
+<a href="/profile/{{user._id}}">{{user.name}}</a>
+{{/if}}
+{{#unless user}}
+<p>Unknown</p>
+{{/unless}}
 {{comment}}
 {{#if sessionUserRev}}
 <form action="/review/{{_id}}/edit" method="GET">

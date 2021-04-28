@@ -1,17 +1,19 @@
-<h2>Welcome Game</h2>
-{{authUser}}
-<h3>Game List</h3>
-<div class="d-flex flex-wrap justify-content-center">
-{{#each mappedGames}}
-  {{> gameCard }}
-  {{#if authUser}}
-<form action="/game/remove-collection" method="POST">
- <input type="hidden" class="hide" name="gameID" value="{{_id}}">
- <button type="submit"><i class="fas fa-heart"></i></button>
-</form>
-{{/if}}   
-{{/each}}
+{{> profileBanner }}
+
+
+<div class="container">
+  <h3>Game List</h3>
+  <div class="d-flex flex-wrap justify-content-center">
+  {{#each mappedGames}}
+    {{> gameCard }}
+    {{#if authUser}}
+  <form action="/game/remove-collection" method="POST">
+  <input type="hidden" class="hide" name="gameID" value="{{_id}}">
+  <button type="submit"><i class="fas fa-heart"></i></button>
+  </form>
+  {{/if}}   
+  {{/each}}
+  </div>
 </div>
-<hr>
 
 

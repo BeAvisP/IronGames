@@ -15,25 +15,25 @@ window.onload = () => {
             res.data.forEach(
               ({
                 _doc: {
-                  user: { _id, name },
+                  user,
                   comment,
                   created_at,
                   downvote,
                   upvote,
-                  _id: reviewID
+                  _id
                 },
                 sessionUserRev,
               }) => {
                 container.innerHTML += `
-            <a href="/profile/${_id}">${name}</a>
+            ${user ? `<a href="/profile/${user._id}">${user.name}</a>` : `Unknown`}
             ${comment}
             ${
               sessionUserRev
                 ? `
-            <form action="/review/${reviewID}/edit" method="GET">
+            <form action="/review/${_id}/edit" method="GET">
             <button type="submit"><i class="far fa-edit"></i></button>
             </form>
-            <button class="remove-review">Eliminar <span class="hide">${reviewID}</span></button>
+            <button class="remove-review far fa-trash-alt"><span class="hide">${_id}</span></button>
             `
                 : ``
             }

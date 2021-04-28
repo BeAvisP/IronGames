@@ -70,10 +70,6 @@
 <form action="/review/{{_id}}/edit" method="GET">
   <button type="submit"><i class="far fa-edit"></i></button>
 </form>
-<form action="/review/{{_id}}/delete" method="POST">
-  <input type="hidden" class="hide" name="gameID" value="{{game}}">
-  <button type="submit"><i class="far fa-trash-alt"></i></button>
-</form>
 <button class="remove-review far fa-trash-alt"><span class="hide">{{_id}}</span></button>
 {{/if}}
 {{created_at}}

@@ -87,7 +87,7 @@ router.post("/:id/delete", isLoggedIn, (req, res, next) => {
         return {
           ...review,
           sessionUserRev:
-            JSON.stringify(review.user._id) === JSON.stringify(req.user._id),
+            review.user ? JSON.stringify(review.user._id) === JSON.stringify(req.user._id) : false
         };
       });
       res.json(mappedReviews);

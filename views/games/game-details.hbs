@@ -60,7 +60,7 @@
 <div class="review-container">
 {{#each reviews}}
 {{#if user._id}}
-<a href="/profile/{{user._id}}">{{user.name}}</a>
+<a href="/user/{{user._id}}">{{user.name}}</a>
 {{/if}}
 {{#unless user}}
 <p>Unknown</p>

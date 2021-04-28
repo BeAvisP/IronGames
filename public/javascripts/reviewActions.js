@@ -25,7 +25,7 @@ window.onload = () => {
                 sessionUserRev,
               }) => {
                 container.innerHTML += `
-            ${user ? `<a href="/profile/${user._id}">${user.name}</a>` : `Unknown`}
+            ${user ? `<a href="/user/${user._id}">${user.name}</a>` : `Unknown`}
             ${comment}
             ${
               sessionUserRev

@@ -11,7 +11,7 @@ const app = express();
 require("./configs/middleware.config")(app);
 
 //Express View engine setup
-require("./configs/sass.config")(app);
+require("./configs/preformatter.config")(app);
 
 require("./configs/views.config")(app);
 

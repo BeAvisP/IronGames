@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const User = require("../models/User.model");
+const Review = require("../models/Review.model");
 
 //Profile Game List
 router.get("/:id/collection", (req, res) => {
@@ -39,6 +40,12 @@ router.get("/:id/wishlist", (req, res) => {
       res.render("user/user-wishlist", { user, sessionUser: req.user, authUser, mappedWishlist });
     });
 });
+
+//Profile reviews
+router.get('/:id/reviews', (req, res) => {
+  res.render('user/user-reviews', {sessionUser: req.user})
+})
+
 
 //Profile Game List and Wishlist
 router.get("/:id", (req, res) => {

@@ -41,12 +41,12 @@ router.post(
       User.findByIdAndUpdate(
         id,
         {
-          user,
+          name: user,
           city,
           description,
-          facebook,
-          twitter,
-          steam,
+          social:{facebook: facebook},
+          social:{twitter: twitter},
+          social:{steam: steam},
           profile_pic: req.files.profileImage ? req.files.profileImage[0].path: req.user.profile_pic,
           profile_Background: req.files.profile_Background ? req.files.profile_Background[0].path: req.user.profile_Background,
         },

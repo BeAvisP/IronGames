@@ -52,8 +52,21 @@ router.get("/:id/wishlist", (req, res) => {
 });
 
 //Profile reviews
-router.get("/:id/reviews", (req, res) => {
+/* router.get("/:id/reviews", (req, res) => {
   res.render("user/user-reviews", { sessionUser: req.user });
+}); */
+
+router.get("/:id/reviews", (req, res) => {
+  let authUser = false;
+  const {id} = req.params;
+  Review.find({user: id})
+  .populate("game")
+  .then((reviews)=> {
+    if (JSON.stringify (req.user._id) === JSON.stringify({user: id})){
+      authUser = true; 
+  }
+  res.render('user/user-reviews', {reviews,sessionUser: req.user, authUser}  )
+  })
 });
 
 //Profile Game List and Wishlist

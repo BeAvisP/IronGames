@@ -38,16 +38,17 @@
    
     
     {{!-- Info Profile --}}
+    <div class="container">
     <div class="info">
       <H2>{{user.name}}</H2>
     <div class="info__description">
       <p>{{user.description}}</p>
     </div> 
-      <p>Location: {{user.city}}📍</p>
+      <p>Location: {{user.city}} 🇪🇸</p>
       <div class="info__social">
-        <p>{{user.social.facebook}}</p>
-        <p>{{user.social.twitter}}</p>
-        <p>{{user.social.steam}}</p>
+        <a href="{{user.social.facebook}}"><i class="fab fa-facebook"></i></a>
+        <a href="{{user.social.twitter}}"><i class="fab fa-twitter"></i></a>
+        <a href="{{user.social.steam}}"><i class="fab fa-steam"></i></a>
       </div>
     </div>
    
@@ -67,6 +68,7 @@
       {{> gameCard}}
       {{/each}}
     </div>
+  </div>
   </div>
 </body>
 

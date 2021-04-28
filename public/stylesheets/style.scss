@@ -100,7 +100,7 @@ body {
   font-size: 8rem;
 }
 .info__description{
-  margin: 0 500px;
+  margin: 0px 20%;
   padding: 20px 50px;
   border: 2px inset #111;
   align-items: center;
@@ -111,11 +111,29 @@ body {
   padding: 5px;
 }
 .info__social{
-  border: 2px solid red;
   display: flex;
   justify-content: flex-end;
-  margin-left: 1300px;
 }
+.info__social a{
+  margin: 5px;
+}
+/* Icons */
+.fa-facebook:before{
+  color:#cf0000;
+  text-decoration: none;
+  font-size: 35px;
+}
+.fa-twitter:before{
+  color: #cf0000;
+  text-decoration: none;
+  font-size: 35px;
+}
+.fa-steam:before{
+  color: #cf0000;
+  text-decoration: none;
+  font-size: 35px;
+}
+
 
 /* Profile */
 

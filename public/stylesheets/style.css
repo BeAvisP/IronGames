@@ -19,6 +19,11 @@ body {
 .no-hover {
   pointer-events: none; }
 
+.btn {
+  background-color: #C60100;
+  border-color: #C60100;
+  color: #f2f2f2; }
+
 /* NAVBAR */
 .navbar {
   background-color: #990100; }
@@ -27,7 +32,8 @@ body {
   .navbar .navbar-nav .nav-link:hover {
     color: #f2f2f2;
     background-color: #cf000070; }
-  .navbar .nav-item .dropdown, .navbar .dropdown:hover {
+  .navbar .nav-item .dropdown,
+  .navbar .dropdown:hover {
     color: #f2f2f2; }
   .navbar .dropdown-menu {
     background-color: #990100; }
@@ -97,5 +103,33 @@ body {
   display: none;
   opacity: 0;
   visibility: hidden; }
+
+/* GAME CARD PARTIAL */
+.game-container {
+  padding: 20px; }
+  .game-container a {
+    color: #f2f2f2;
+    text-decoration: none; }
+  .game-container .card {
+    background-color: #990100;
+    box-shadow: inset 0px -10px 20px 1px #000000db;
+    border: none; }
+
+.card-img-top {
+  object-fit: cover;
+  width: 18rem;
+  height: 15rem; }
+
+.game-card-actions {
+  float: right; }
+  .game-card-actions button {
+    background: transparent;
+    border: none;
+    font-size: 2rem;
+    color: #ababab; }
+  .game-card-actions button.collection {
+    color: green; }
+  .game-card-actions button.wishlist {
+    color: #C60100; }
 
 /*# sourceMappingURL=style.css.map */

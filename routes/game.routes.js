@@ -15,6 +15,7 @@ router.get("/:id", (req, res, next) => {
     .then((game) => {
       Review.find({ game: id })
         .populate("user")
+        .sort({ created_at: -1 })
         .then((reviews) => {
           if (!req.user) {
             return res.render("games/game-details", {

@@ -24,8 +24,10 @@ router.get("/:id", (req, res, next) => {
             });
           }
           const mappedReviews = reviews.map((review) => {
-            review.sessionUserRev =
+            if(review.user) {
+              review.sessionUserRev =
               JSON.stringify(review.user._id) === JSON.stringify(req.user._id);
+            }
             return review;
           });
           const { _id: userID } = req.user;

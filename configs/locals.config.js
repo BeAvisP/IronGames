@@ -1,4 +1,5 @@
 module.exports = (app) => {
-  app.locals.title = "Express - Generated with IronGenerator";
+  app.locals.title = "IronGames - Generated with IronGenerator";
+  app.locals.subtitle = "The largest game DB";
   app.locals.login = false;
 };

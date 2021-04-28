@@ -58,29 +58,30 @@
 
 {{!-- TODO partials --}}
 <div class="review-container">
-  {{#each reviews}}
-  <a href="/profile/{{user._id}}">{{user.email}}</a>
-  {{comment}}
-  {{#if sessionUserRev}}
-  <form action="/review/{{_id}}/edit" method="GET">
-    <button type="submit"><i class="far fa-edit"></i></button>
-  </form>
-  <form action="/review/{{_id}}/delete" method="POST">
-    <input type="hidden" class="hide" name="gameID" value="{{game}}">
-    <button type="submit"><i class="far fa-trash-alt"></i></button>
-  </form>
-  <button class="remove-review far fa-trash-alt"><span class="hide">{{_id}}</span></button>
-  {{/if}}
-  {{created_at}}
-  {{#unless sessionUserRev}}
-  <form action="/review/{{_id}}/upvote" method="POST">
-    <button type="submit"><i class="far fa-thumbs-up"></i>{{upvote}}</button>
-  </form>
-  <form action="/review/{{_id}}/downvote" method="POST">
-    <button type="submit"><i class="far fa-thumbs-down"></i>{{downvote}}</button>
-  </form>
-  {{/unless}}
-  {{/each}}
+{{#each reviews}}
+{{#if user._id}}
+<a href="/profile/{{user._id}}">{{user.name}}</a>
+{{/if}}
+{{#unless user}}
+<p>Unknown</p>
+{{/unless}}
+{{comment}}
+{{#if sessionUserRev}}
+<form action="/review/{{_id}}/edit" method="GET">
+  <button type="submit"><i class="far fa-edit"></i></button>
+</form>
+<button class="remove-review far fa-trash-alt"><span class="hide">{{_id}}</span></button>
+{{/if}}
+{{created_at}}
+{{#unless sessionUserRev}}
+<form action="/review/{{_id}}/upvote" method="POST">
+  <button type="submit"><i class="far fa-thumbs-up"></i>{{upvote}}</button>
+</form>
+<form action="/review/{{_id}}/downvote" method="POST">
+  <button type="submit"><i class="far fa-thumbs-down"></i>{{downvote}}</button>
+</form>
+{{/unless}}
+{{/each}}
 </div>
 
 

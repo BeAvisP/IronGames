@@ -14,7 +14,7 @@ const userSchema = new Schema({
   wishlist: [{ type: Schema.Types.ObjectId, ref: "Game" }],
   social: {
     facebook: { type: String },
-    twiteer: { type: String },
+    twitter: { type: String },
     steam: { type: String },
   },
   genres: [],

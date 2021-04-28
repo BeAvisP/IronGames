@@ -30,7 +30,7 @@ router.post(
   (req, res) => {
     const { user, city, description, facebook, twitter, steam } = req.body;
     const { _id: id } = req.user;
-    console.log(req.body);
+    console.log('holaaaaaaaa', req.body);
     if (req.files) {
       User.findByIdAndUpdate(
         id,
@@ -38,9 +38,7 @@ router.post(
           name: user,
           city,
           description,
-          social:{facebook: facebook},
-          social:{twitter: twitter},
-          social:{steam: steam},
+          social:{steam: steam, twitter: twitter, facebook: facebook },
           profile_pic: req.files.profileImage ? req.files.profileImage[0].path: req.user.profile_pic,
           profile_Background: req.files.profile_Background ? req.files.profile_Background[0].path: req.user.profile_Background,
         },

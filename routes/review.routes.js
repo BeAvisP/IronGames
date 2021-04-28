@@ -73,21 +73,24 @@ router.post("/:id/edit", isLoggedIn, (req, res, next) => {
 router.post("/:id/delete", isLoggedIn, (req, res, next) => {
   const { id } = req.params;
   let gameID;
-  Review.findById(id).populate("game")
+  Review.findById(id)
+    .populate("game")
     .then((review) => {
-      console.log(review);
       gameID = review.game._id;
       return Review.findByIdAndDelete(id);
     })
     .then(() => {
-      return Review.find({ game: gameID }).populate("user");
+      return Review.find({ game: gameID })
+        .populate("user")
+        .sort({ created_at: -1 });
     })
     .then((reviews) => {
       const mappedReviews = reviews.map((review) => {
         return {
           ...review,
-          sessionUserRev:
-            review.user ? JSON.stringify(review.user._id) === JSON.stringify(req.user._id) : false
+          sessionUserRev: review.user
+            ? JSON.stringify(review.user._id) === JSON.stringify(req.user._id)
+            : false,
         };
       });
       res.json(mappedReviews);

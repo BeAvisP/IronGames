@@ -1,38 +1,27 @@
 <img src="{{game.background_image}}" alt="">
 {{game.name}}
 
-{{!-- REFACTOR IN 2 FORMS READING FROM USER INFO --}}
-{{!-- Game not added to user collection --}}
-{{#if addCollection}}
-<form action="/game/add-collection" method="POST">
- <input type="hidden" name="gameID" value="{{game._id}}">
- <button type="submit"><i class="far fa-bookmark"></i></button>
+{{!-- Add/Remove Game from user collection --}}
+<form method="POST" {{#unless inCollection}}action="/game/add-collection" {{/unless}} 
+  {{#if inCollection}}action="/game/remove-collection" {{/if}}>
+  <input type="hidden" class="hide" name="gameID" value="{{game._id}}">
+  <button type="submit">
+    {{#unless inCollection}}<i class="far fa-bookmark"></i>{{/unless}}
+    {{#if inCollection}}<i class="fas fa-bookmark"></i>{{/if}}
+  </button>
 </form>
-{{/if}}
-{{!-- Game added to user collection --}}
-{{#unless addCollection}}
-<form action="/game/remove-collection" method="POST">
- <input type="hidden" name="gameID" value="{{game._id}}">
- <button type="submit"><i class="fas fa-bookmark"></i></button>
-</form>
-{{/unless}}
 
-{{!-- Game not added to user wishlist --}}
-{{#if showWishlist}}
-{{#if addWishlist}}
-<form action="/game/add-wishlist" method="POST">
- <input type="hidden" name="gameID" value="{{game._id}}">
- <button type="submit"><i class="far fa-heart"></i></button>
-</form>
-{{/if}}
-{{!-- Game added to user wishlist --}}
-{{#unless addWishlist}}
-<form action="/game/remove-wishlist" method="POST">
- <input type="hidden" name="gameID" value="{{game._id}}">
- <button type="submit"><i class="fas fa-heart"></i></button>
+{{!-- Add/Remove Game from user wishlist --}}
+{{#unless inCollection}}
+<form method="POST" {{#unless inWishlist}}action="/game/add-wishlist" {{/unless}} 
+  {{#if inWishlist}}action="/game/remove-wishlist" {{/if}}>
+  <input type="hidden" class="hide" name="gameID" value="{{game._id}}">
+  <button type="submit">
+    {{#unless inWishlist}}<i class="far fa-heart"></i>{{/unless}}
+    {{#if inWishlist}}<i class="fas fa-heart"></i>{{/if}}
+  </button>
 </form>
 {{/unless}}
-{{/if}}
 
 {{!-- INFO WE GET FROM THE DDBB --}}
 {{game.released}}
@@ -60,16 +49,40 @@
 {{!-- TODO partial --}}
 {{#if sessionUser}}
 <form action="/review/create" method="POST">
-  <input type="hidden" name="gameID" value="{{game._id}}">
+  <input type="hidden" class="hide" name="gameID" value="{{game._id}}">
   <textarea name="review" id="review" cols="30" rows="10"></textarea>
- <button type="submit">Post review</button>
+  <button type="submit">Post review</button>
 </form>
 {{/if}}
 
 
 {{!-- TODO partials --}}
+<div class="review-container">
 {{#each reviews}}
-{{!-- <a href="/profile/{{user._id}}">{{user.email}}</a> --}}
+<a href="/profile/{{user._id}}">{{user.email}}</a>
 {{comment}}
+{{#if sessionUserRev}}
+<form action="/review/{{_id}}/edit" method="GET">
+  <button type="submit"><i class="far fa-edit"></i></button>
+</form>
+<form action="/review/{{_id}}/delete" method="POST">
+  <input type="hidden" class="hide" name="gameID" value="{{game}}">
+  <button type="submit"><i class="far fa-trash-alt"></i></button>
+</form>
+<button class="remove-review far fa-trash-alt"><span class="hide">{{_id}}</span></button>
+{{/if}}
 {{created_at}}
+{{#unless sessionUserRev}}
+<form action="/review/{{_id}}/upvote" method="POST">
+  <button type="submit"><i class="far fa-thumbs-up"></i>{{upvote}}</button>
+</form>
+<form action="/review/{{_id}}/downvote" method="POST">
+  <button type="submit"><i class="far fa-thumbs-down"></i>{{downvote}}</button>
+</form>
+{{/unless}}
 {{/each}}
+</div>
+
+
+<script src="/javascripts/axiosHandler.js"></script>
+<script src="/javascripts/reviewActions.js"></script>

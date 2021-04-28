@@ -2,14 +2,8 @@ const express = require("express");
 const router = express.Router();
 const User = require("../models/User.model");
 const uploader = require("../configs/cloudinary.config");
+const { isLoggedIn, isLoggedOut } = require("../middlewares/auth");
 
-function isLoggedIn(req, res, next) {
-  if (req.isAuthenticated()) {
-    next();
-  } else {
-    res.redirect("/login");
-  }
-}
 router.get("/", isLoggedIn, (req, res, next) => {
   res.render("user/profile", { sessionUser: req.user });
 });
@@ -22,13 +16,13 @@ router.get("/edit", isLoggedIn, (req, res) => {
       res.render("user/user-edit", { sessionUser: req.user, user });
     })
     .catch((error) => {
-      res.render("user/profile");
+      res.render("user/profile", { sessionUser: req.user });
     });
 });
 
 //Profile edit user
 router.post(
-  "/edit",
+  "/edit", isLoggedIn,
   uploader.fields([
     { name: "profileImage", maxCount: 1 },
     { name: "profile_Background", maxCount: 1 },

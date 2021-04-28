@@ -6,8 +6,8 @@ const reviewSchema = new Schema(
     user: { type: Schema.Types.ObjectId, ref: "User" },
     game: { type: Schema.Types.ObjectId, ref: "Game" },
     comment: { type: String },
-    upvote: { type: Number },
-    downvote: { type: Number },
+    upvote: { type: Number, default: 0 },
+    downvote: { type: Number, default: 0 },
   },
   {
     timestamps: {

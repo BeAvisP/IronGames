@@ -1,0 +1,5 @@
+<form action="/review/{{review._id}}/edit" method="POST">
+  <input type="hidden" class="hide" name="redirect" value="{{redirectURL}}">
+  <textarea type="textarea" name="review" id="review" cols="30" rows="10">{{review.comment}}</textarea>
+ <button type="submit">Post review</button>
+</form>

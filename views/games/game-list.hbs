@@ -3,7 +3,31 @@
 
   <div class="d-flex flex-wrap justify-content-center">
     {{#each games}}
-      {{> gameCard }}      
+    <div>
+      <button class="remove-collection">Eliminar <span class="hide">{{id}}</span></button>
+      <form method="POST" {{#unless owned}}action="/game/add-collection" {{/unless}} {{#if
+        owned}}action="/game/remove-collection" {{/if}}>
+        <input type="hidden" class="hide" name="gameID" value="{{id}}">
+        <button type="submit" class="remove-collection">
+          {{#unless owned}}<i class="far fa-bookmark"></i>{{/unless}}
+          {{#if owned}}<i class="fas fa-bookmark"></i>{{/if}}
+        </button>
+      </form>
+      {{#unless owned}}
+      <form method="POST" {{#unless wishlisted}}action="/game/add-wishlist" {{/unless}} {{#if
+        wishlisted}}action="/game/remove-wishlist" {{/if}}>
+        <input type="hidden" class="hide" name="gameID" value="{{id}}">
+        <button type="submit">
+          {{#unless wishlisted}}<i class="far fa-heart"></i>{{/unless}}
+          {{#if wishlisted}}<i class="fas fa-heart"></i>{{/if}}
+        </button>
+      </form>
+      {{/unless}}
+      {{> gameCard }}
+    </div>
     {{/each}}
   </div>
 </div>
+
+<script src="/javascripts/axiosHandler.js"></script>
+<script src="/javascripts/gamesActions.js"></script>

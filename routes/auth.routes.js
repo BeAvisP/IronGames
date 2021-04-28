@@ -4,12 +4,13 @@ const passport = require("passport");
 const User = require("../models/User.model");
 const router = express.Router();
 const saltRounds = 10;
+const { isLoggedIn, isLoggedOut } = require("../middlewares/auth");
 
-router.get("/signup", (req, res) => {
+router.get("/signup", isLoggedOut, (req, res) => {
   res.render("auth/signup");
 });
 
-router.post("/signup", (req, res) => {
+router.post("/signup", isLoggedOut, (req, res) => {
   const { name, email, password } = req.body;
 
   if (!name || !email || !password) {
@@ -52,7 +53,7 @@ router.post("/signup", (req, res) => {
   });
 });
 
-router.get("/login", (req, res) => {
+router.get("/login", isLoggedOut, (req, res) => {
   let errorMessage = req.flash("error")[0];
   const { email, password } = req.body;
   if ((!email || !password) && errorMessage) {
@@ -65,6 +66,7 @@ router.get("/login", (req, res) => {
 
 router.post(
   "/login",
+  isLoggedOut,
   passport.authenticate("local", {
     successRedirect: "/",
     failureRedirect: "/login",
@@ -73,7 +75,7 @@ router.post(
   })
 );
 
-router.get("/logout", (req, res) => {
+router.get("/logout", isLoggedIn, (req, res) => {
   req.logout();
   res.redirect("/");
 });

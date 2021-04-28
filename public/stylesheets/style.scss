@@ -25,19 +25,27 @@ h1 {
 body {
   background-color: #212529;
   color: #f2f2f2;
+  // font-family: 'Roboto', sans-serif;
+  font-family: "Righteous", cursive;
 }
+h1,
+h2 {
+  font-family: "Press Start 2P", cursive;
+}
+
 .no-hover {
   pointer-events: none;
 }
 
-.btn{
-  background-color: #C60100;
-  border-color: #C60100;
+.btn {
+  background-color: #c60100;
+  border-color: #c60100;
   color: #f2f2f2;
 }
 .btn:hover {
   background-color: #e00000;
-  border-color: #E00000;
+  border-color: #e00000;
+  color: #f2f2f2;
 }
 
 /* NAVBAR */
@@ -133,13 +141,13 @@ body {
 }
 
 /* GAME CARD PARTIAL */
-.game-container{
+.game-container {
   padding: 20px;
   a {
     color: #f2f2f2;
     text-decoration: none;
   }
-  .card{
+  .card {
     background-color: #990100;
     box-shadow: inset 0px -10px 20px 1px #000000db;
     border: none;
@@ -151,18 +159,80 @@ body {
   height: 15rem;
 }
 
-.game-card-actions{
+.game-card-actions {
   float: right;
-  button{
+  button {
     background: transparent;
     border: none;
     font-size: 2rem;
-    color: #ababab;    
+    color: #ababab;
   }
-  button.collection{
+  button.collection {
     color: green;
   }
-  button.wishlist{
-    color: #C60100;
+  button.wishlist {
+    color: #c60100;
+  }
+}
+
+/* GAME DETAILS */
+.game-header {
+  height: 30vh;
+  position: relative;
+  img {
+    height: 100%;
+    object-fit: cover;
+    width: 100%;
+  }
+  h3 {
+    position: absolute;
+    top: 45%;
+    left: 45%;
+  }
+  .game-card-actions {
+    position: absolute;
+    top: 4%;
+    left: 2%;
+    background: #5d5959e6;
+    border-radius: 10px;
+    padding: 5px;
+  }
+}
+.game-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  .gallery-img {
+    height: 250px;
+    margin: 15px 15px;
+    border: 1px solid white;
+  }
+}
+
+/* REVIEWS */
+.review-avatar{
+  width: 75px;
+  height: 75px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+.edit-review button{
+  width: 150px;
+  margin: 0 auto;
+}
+
+.reviews-actions {
+  float: right;
+  button {
+    background: transparent;
+    border: none;
+    font-size: 1.5rem;
+    color: #ababab;
+  }
+  button.upvote {
+    color: green;
+  }
+  button.downvote {
+    color: #c60100;
   }
 }

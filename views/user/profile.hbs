@@ -1,29 +1,70 @@
-<h2>Welcome</h2>
-<H2>{{user.name}}</H2>
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
 
-{{#if authUser}}
-<a href="/profile/edit" rel="noopener noreferrer">Edit</a>
-<hr>
-<form action="/profile/{{user._id}}/delete" method="POST">
-  <button type="submit">Delete</button>
-</form>
-{{/if}}
+<body>
+  <div class="container__profile">
+     {{!-- Images Profile --}}
+     <div class="imagesProfile__background">
+      <img src="{{user.profile_Background}}" alt="">
+    </div>
+     {{!-- Profile Games --}}
+    <div class=" edit__profile">
+      <div class="col edit__profile--gamelist">
+      <a href="/user/{{user._id}}/collection" rel="noopener noreferrer">Game List</a>
+      <a href="/user/{{user._id}}/wishlist" rel="noopener noreferrer">Wishlist</a>
+      <a href="/user/{{user._id}}/reviews" rel="noopener noreferrer">Reviews</a>
+     </div>
+     {{!-- Profile edit --}}
+    {{#if authUser}}
+    <div class="col-3 edit__profile--edit">
+    <a href="/profile/edit" rel="noopener noreferrer">Edit</a>
+      <form action="/profile/{{user._id}}/delete" method="POST">
+        <button class="buttom__profile--delete" type="submit">Delete</button>
+      </form>
+    {{/if}}
+      </div>
+    </div>
 
-<a href="/user/{{user._id}}/collection" rel="noopener noreferrer">Game List</a>
-<hr>
-<a href="/user/{{user._id}}/wishlist" rel="noopener noreferrer">Wishlist</a>
+    <div class="imagesProfile">
+      <img src="{{user.profile_pic}}" alt="">
+    </div>
+   
+    
+    {{!-- Info Profile --}}
+    <div class="info">
+      <H2>{{user.name}}</H2>
+      <p>{{user.description}}</p>
+      <p>{{user.city}}</p>
+      <p>{{user.social.facebook}}</p>
+    </div>
+   
+   
+   
 
-<h3>Game List</h3>
-<div class="d-flex flex-wrap justify-content-center">
-  {{#each user.gameList}}
-  {{> gameCard }}
-  {{/each}}
-</div>
-<hr>
-<h3>Wishlist</h3>
-<div class="d-flex flex-wrap justify-content-center">
-  {{#each user.wishlist}}
-  {{> gameCard}}
-  {{/each}}
-</div>
+    <hr>
+    <div class="profile__gamelist">
+    <h3>Game List</h3>
+    <div class="d-flex flex-wrap justify-content-center">
+      {{#each user.gameList}}
+      {{> gameCard }}
+      {{/each}}
+    </div>
+    </div>
+    <hr>
+    <h3>Wishlist</h3>
+    <div class="d-flex flex-wrap justify-content-center">
+      {{#each user.wishlist}}
+      {{> gameCard}}
+      {{/each}}
+    </div>
+  </div>
+</body>
+
+</html>

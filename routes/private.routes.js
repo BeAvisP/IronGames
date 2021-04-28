@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const User = require("../models/User.model");
+const uploader = require("../configs/cloudinary.config");
 const { isLoggedIn, isLoggedOut } = require("../middlewares/auth");
 
 router.get("/", isLoggedIn, (req, res, next) => {
@@ -12,7 +13,7 @@ router.get("/edit", isLoggedIn, (req, res) => {
   const { _id: id } = req.user;
   User.findById(id)
     .then((user) => {
-      res.render("user/user-edit", { sessionUser: req.user });
+      res.render("user/user-edit", { sessionUser: req.user, user });
     })
     .catch((error) => {
       res.render("user/profile", { sessionUser: req.user });
@@ -20,17 +21,37 @@ router.get("/edit", isLoggedIn, (req, res) => {
 });
 
 //Profile edit user
-router.post("/edit", isLoggedIn, (req, res) => {
-  const { city, description } = req.body;
-  const { _id: id } = req.user;
-  User.findByIdAndUpdate(id, { city, description })
-    .then((user) => {
-      res.redirect("/profile");
-    })
-    .catch((error) => {
-      res.render("user/profile", { sessionUser: req.user });
-    });
-});
+router.post(
+  "/edit", isLoggedIn,
+  uploader.fields([
+    { name: "profileImage", maxCount: 1 },
+    { name: "profile_Background", maxCount: 1 },
+  ]),
+  (req, res) => {
+    const { user, city, description, facebook, twitter, steam } = req.body;
+    const { _id: id } = req.user;
+    console.log(req.body);
+    if (req.files) {
+      User.findByIdAndUpdate(
+        id,
+        {
+          name: user,
+          city,
+          description,
+          social:{facebook: facebook},
+          social:{twitter: twitter},
+          social:{steam: steam},
+          profile_pic: req.files.profileImage ? req.files.profileImage[0].path: req.user.profile_pic,
+          profile_Background: req.files.profile_Background ? req.files.profile_Background[0].path: req.user.profile_Background,
+        },
+        { new: true }
+      )
+        .then((user) => {
+          res.redirect(`/user/${user._id}`);
+        }).catch(error => console.error(error))
+    }   
+  }
+);
 
 //Delete
 router.post("/:id/delete", isLoggedIn, (req, res) => {

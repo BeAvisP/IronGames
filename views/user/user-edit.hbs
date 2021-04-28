@@ -1,19 +1,26 @@
 <h2>Welcome to edit</h2>
 
-<form action="/profile/edit" method="POST">
-  <label for="profileImage">Image</label>
-  <input type="image" name='profileImage'>
-
-  <label for="city"></label>
+<form action="/profile/edit" method="POST" enctype="multipart/form-data">
+  <label for="profileImage">Profile image</label>
+  <input type="file" name='profileImage' value="{{user.profile_pic}}">
+  <hr>
+  <label for="profile_Background">Background</label>
+  <input type="file" name="profile_Background" value="{{user.profile_Background}}">
+  <hr>
+  <label for="username">Username</label>
+  <input type="text" name="user" value="{{user.name}}"> 
+  <label for="city">City</label>
   <input type="text" name='city' value="{{user.city}}">
 
   <label for="description">Description</label>
   <input type="text" name="description" value="{{user.description}}">
 
   <label for="Social">Social</label>
-  <input type="text" value="{{user.social.facebook}}">
-  <input type="text" value="{{user.social.twitter}}">
-  <input type="text" value="{{user.social.steam}}">
+  <input type="text" name="facebook" value="{{user.social.facebook}}">
+  <input type="text" name="twitter" value="{{user.social.twitter}}">
+  <input type="text" name="steam" value="{{user.social.steam}}">
 
   <button type="submit">Save</button>
 </form>
+
+<a href="/user/{{user._id}}">Back</a>

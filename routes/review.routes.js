@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const Review = require("../models/Review.model");
 const { isLoggedIn } = require("../middlewares/auth");
+const { default: axios } = require("axios");
 
 router.post("/create", isLoggedIn, (req, res, next) => {
   const { gameID: game, review: comment } = req.body;
@@ -61,12 +62,41 @@ router.post("/:id/edit", isLoggedIn, (req, res, next) => {
     .catch((error) => next(error));
 });
 
+// router.post("/:id/delete", isLoggedIn, (req, res, next) => {
+//   const { id } = req.params;
+//   const { gameID: game } = req.body;
+//   Review.findByIdAndDelete(id)
+//     .then(() => res.redirect(`/game/${game}`))
+//     .catch((error) => next(error));
+// });
+
 router.post("/:id/delete", isLoggedIn, (req, res, next) => {
   const { id } = req.params;
-  const { gameID: game } = req.body;
-  Review.findByIdAndDelete(id)
-    .then(() => res.redirect(`/game/${game}`))
+  let gameID;
+  Review.findById(id).populate("game")
+    .then((review) => {
+      console.log(review);
+      gameID = review.game._id;
+      return Review.findByIdAndDelete(id);
+    })
+    .then(() => {
+      return Review.find({ game: gameID }).populate("user");
+    })
+    .then((reviews) => {
+      const mappedReviews = reviews.map((review) => {
+        return {
+          ...review,
+          sessionUserRev:
+            JSON.stringify(review.user._id) === JSON.stringify(req.user._id),
+        };
+      });
+      res.json(mappedReviews);
+    })
     .catch((error) => next(error));
 });
+
+// const findReviewByID = (id) => {
+//   return ;
+// };
 
 module.exports = router;

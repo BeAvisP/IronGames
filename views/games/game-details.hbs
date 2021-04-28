@@ -57,6 +57,7 @@
 
 
 {{!-- TODO partials --}}
+<div class="review-container">
 {{#each reviews}}
 <a href="/profile/{{user._id}}">{{user.email}}</a>
 {{comment}}
@@ -68,6 +69,7 @@
   <input type="hidden" class="hide" name="gameID" value="{{game}}">
   <button type="submit"><i class="far fa-trash-alt"></i></button>
 </form>
+<button class="remove-review far fa-trash-alt"><span class="hide">{{_id}}</span></button>
 {{/if}}
 {{created_at}}
 {{#unless sessionUserRev}}
@@ -79,3 +81,8 @@
 </form>
 {{/unless}}
 {{/each}}
+</div>
+
+
+<script src="/javascripts/axiosHandler.js"></script>
+<script src="/javascripts/reviewActions.js"></script>

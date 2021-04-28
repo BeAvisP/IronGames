@@ -23,7 +23,8 @@ h1 {
     background-color: #444b52; }
 
 .hide {
-  visibility: hidden;
-  opacity: 0; }
+  display: none;
+  opacity: 0;
+  visibility: hidden; }
 
 /*# sourceMappingURL=style.css.map */

@@ -4,7 +4,8 @@
       <img src="/images/Slider-01.jpg" class="d-block w-100" style="height: 400px; object-fit: cover;" alt="dota-bg">
     </div>
     <div class="carousel-item">
-      <img src="/images/Slider-02.jpg" class="d-block w-100" style="height: 400px; object-fit: cover;" alt="super-meat-boy-bg">
+      <img src="/images/Slider-02.jpg" class="d-block w-100" style="height: 400px; object-fit: cover;"
+        alt="super-meat-boy-bg">
     </div>
   </div>
   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
@@ -17,10 +18,11 @@
   </button>
 </div>
 <div class="container">
-  <h1>{{title}}</h1>
-  <p>Welcome to {{title}}</p>
-  
-  <a href="/user/{{sessionUser._id}}">Here</a>
+  <div class="text-center mt-5">
+    <h1>{{title}}</h1>
+    <h2 class="mt-2">{{subtitle}}</h2>
+  </div>
 
   {{> searchForm }}
+
 </div>

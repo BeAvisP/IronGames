@@ -51,6 +51,9 @@ h2 {
 /* NAVBAR */
 .navbar {
   background-color: #990100;
+  position: fixed;
+  width: 100%;
+  z-index: 999;
   .navbar-nav {
     .nav-link {
       color: #f2f2f2;
@@ -78,12 +81,12 @@ h2 {
 }
 
 /* Sign-up and Login */
-.signup_container{
+.signup_container {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
 }
-.image__poster{
+.image__poster {
   padding-top: 30px;
   margin: 0 auto;
 }
@@ -116,7 +119,7 @@ h2 {
 .info h2 {
   font-size: 8rem;
 }
-.info__description{
+.info__description {
   margin: 0px 20%;
   padding: 20px 50px;
   border: 2px inset #111;
@@ -127,30 +130,29 @@ h2 {
   margin: 0 auto;
   padding: 5px;
 }
-.info__social{
+.info__social {
   display: flex;
   justify-content: flex-end;
 }
-.info__social a{
+.info__social a {
   margin: 5px;
 }
 /* Icons */
-.fa-facebook:before{
-  color:#cf0000;
-  text-decoration: none;
-  font-size: 35px;
-}
-.fa-twitter:before{
+.fa-facebook:before {
   color: #cf0000;
   text-decoration: none;
   font-size: 35px;
 }
-.fa-steam:before{
+.fa-twitter:before {
   color: #cf0000;
   text-decoration: none;
   font-size: 35px;
 }
-
+.fa-steam:before {
+  color: #cf0000;
+  text-decoration: none;
+  font-size: 35px;
+}
 
 /* Profile */
 

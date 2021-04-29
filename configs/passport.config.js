@@ -64,6 +64,7 @@ module.exports = (app) => {
               cb(null, user);
               return;
             }
+            console.log(profile)
             User.create({
               google_id: profile.id,
               email: profile._json.email,

@@ -15,6 +15,7 @@ router.get("/:id", (req, res, next) => {
     .then((game) => {
       Review.find({ game: id })
         .populate("user")
+        .sort({ created_at: -1 })
         .then((reviews) => {
           if (!req.user) {
             return res.render("games/game-details", {
@@ -24,9 +25,10 @@ router.get("/:id", (req, res, next) => {
             });
           }
           const mappedReviews = reviews.map((review) => {
-            if(review.user) {
+            if (review.user) {
               review.sessionUserRev =
-              JSON.stringify(review.user._id) === JSON.stringify(req.user._id);
+                JSON.stringify(review.user._id) ===
+                JSON.stringify(req.user._id);
             }
             return review;
           });

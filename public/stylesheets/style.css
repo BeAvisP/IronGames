@@ -14,10 +14,25 @@ h1 {
 /* GENERAL STYLES */
 body {
   background-color: #212529;
-  color: #f2f2f2; }
+  color: #f2f2f2;
+  font-family: "Righteous", cursive; }
+
+h1,
+h2 {
+  font-family: "Press Start 2P", cursive; }
 
 .no-hover {
   pointer-events: none; }
+
+.btn {
+  background-color: #c60100;
+  border-color: #c60100;
+  color: #f2f2f2; }
+
+.btn:hover {
+  background-color: #e00000;
+  border-color: #e00000;
+  color: #f2f2f2; }
 
 /* NAVBAR */
 .navbar {
@@ -27,7 +42,8 @@ body {
   .navbar .navbar-nav .nav-link:hover {
     color: #f2f2f2;
     background-color: #cf000070; }
-  .navbar .nav-item .dropdown, .navbar .dropdown:hover {
+  .navbar .nav-item .dropdown,
+  .navbar .dropdown:hover {
     color: #f2f2f2; }
   .navbar .dropdown-menu {
     background-color: #990100; }
@@ -143,5 +159,85 @@ body {
   display: none;
   opacity: 0;
   visibility: hidden; }
+
+/* GAME CARD PARTIAL */
+.game-container {
+  padding: 20px; }
+  .game-container a {
+    color: #f2f2f2;
+    text-decoration: none; }
+  .game-container .card {
+    background-color: #990100;
+    box-shadow: inset 0px -10px 20px 1px #000000db;
+    border: none; }
+
+.card-img-top {
+  object-fit: cover;
+  width: 18rem;
+  height: 15rem; }
+
+.game-card-actions {
+  float: right; }
+  .game-card-actions button {
+    background: transparent;
+    border: none;
+    font-size: 2rem;
+    color: #ababab; }
+  .game-card-actions button.collection {
+    color: green; }
+  .game-card-actions button.wishlist {
+    color: #c60100; }
+
+/* GAME DETAILS */
+.game-header {
+  height: 30vh;
+  position: relative; }
+  .game-header img {
+    height: 100%;
+    object-fit: cover;
+    width: 100%; }
+  .game-header h3 {
+    position: absolute;
+    top: 45%;
+    left: 45%; }
+  .game-header .game-card-actions {
+    position: absolute;
+    top: 4%;
+    left: 2%;
+    background: #5d5959e6;
+    border-radius: 10px;
+    padding: 5px; }
+
+.game-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; }
+  .game-gallery .gallery-img {
+    height: 250px;
+    margin: 15px 15px;
+    border: 1px solid white; }
+
+/* REVIEWS */
+.review-avatar {
+  width: 75px;
+  height: 75px;
+  object-fit: cover;
+  border-radius: 50%; }
+
+.edit-review button {
+  width: 150px;
+  margin: 0 auto; }
+
+.reviews-actions {
+  float: right; }
+  .reviews-actions button {
+    background: transparent;
+    border: none;
+    font-size: 1.5rem;
+    color: #ababab; }
+  .reviews-actions button.upvote {
+    color: green; }
+  .reviews-actions button.downvote {
+    color: #c60100; }
 
 /*# sourceMappingURL=style.css.map */

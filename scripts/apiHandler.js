@@ -11,7 +11,6 @@ class ApiHandler {
   }
 
   getGameByID(id) {
-    // console.log(`${this.baseURL}/games/${id}?key=${process.env.API_KEY}`)
     return axios.get(`${this.baseURL}/games/${id}?key=${process.env.API_KEY}`);
   }
 }

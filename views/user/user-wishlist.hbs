@@ -1,14 +1,16 @@
 {{> profileBanner }}
 
-<h3>Wishlist</h3>
-<div class="d-flex flex-wrap justify-content-center">
-  {{#each mappedWishlist}}
-  {{> gameCard }}
-  {{#if authUser}}
-  <form action="/game/remove-wishlist" method="POST">
-    <input type="hidden" name="gameID" value="{{_id}}">
-    <button type="submit"><i class="fas fa-heart"></i></button>
-  </form>
-  {{/if}}
-  {{/each}}
+<div class="container">
+  <h3>Wishlist</h3>
+  <div class="d-flex flex-wrap justify-content-center">
+    {{#each mappedWishlist}}
+    {{> gameCard }}
+    {{#if authUser}}
+    <form action="/game/remove-wishlist" method="POST">
+      <input type="hidden" name="gameID" value="{{_id}}">
+      <button type="submit"><i class="fas fa-heart"></i></button>
+    </form>
+    {{/if}}
+    {{/each}}
+  </div>
 </div>

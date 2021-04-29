@@ -57,7 +57,8 @@ router.get("/:id", (req, res, next) => {
 router.post("/add-collection", isLoggedIn, (req, res, next) => {
   const backURL = req.header("Referer");
   const host = req.headers.host;
-  const redirectURL = backURL.split(`https://${host}`)[1] || backURL.split(`http://${host}`)[1];
+  const redirectURL =
+    backURL.split(`https://${host}`)[1] || backURL.split(`http://${host}`)[1];
   const { gameID } = req.body;
   const { _id: userID } = req.user;
   User.findById(userID)
@@ -86,7 +87,8 @@ router.post("/add-collection", isLoggedIn, (req, res, next) => {
 router.post("/remove-collection", isLoggedIn, (req, res, next) => {
   const backURL = req.header("Referer");
   const host = req.headers.host;
-  const redirectURL = backURL.split(`https://${host}`)[1] || backURL.split(`http://${host}`)[1];
+  const redirectURL =
+    backURL.split(`https://${host}`)[1] || backURL.split(`http://${host}`)[1];
   const { gameID } = req.body;
   const { _id: userID } = req.user;
   User.findById(userID)
@@ -115,7 +117,8 @@ router.post("/remove-collection", isLoggedIn, (req, res, next) => {
 router.post("/add-wishlist", isLoggedIn, (req, res, next) => {
   const backURL = req.header("Referer");
   const host = req.headers.host;
-  const redirectURL = backURL.split(`https://${host}`)[1] || backURL.split(`http://${host}`)[1];
+  const redirectURL =
+    backURL.split(`https://${host}`)[1] || backURL.split(`http://${host}`)[1];
   const { gameID } = req.body;
   const { _id: userID } = req.user;
   User.findById(userID)
@@ -144,7 +147,8 @@ router.post("/add-wishlist", isLoggedIn, (req, res, next) => {
 router.post("/remove-wishlist", isLoggedIn, (req, res, next) => {
   const backURL = req.header("Referer");
   const host = req.headers.host;
-  const redirectURL = backURL.split(`https://${host}`)[1] || backURL.split(`http://${host}`)[1];
+  const redirectURL =
+    backURL.split(`https://${host}`)[1] || backURL.split(`http://${host}`)[1];
   const { gameID } = req.body;
   const { _id: userID } = req.user;
   User.findById(userID)

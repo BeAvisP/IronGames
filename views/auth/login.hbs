@@ -18,6 +18,9 @@
             <button type="submit" class="btn btn-danger signup__terms">Login</button>
             <div class="mb-3 form-check">
             </div>
+            {{#if errorMessage}}
+              <p>{{ errorMessage }}</p>
+            {{/if}}
         </form>
         </div>
       </div>
@@ -31,28 +34,8 @@
 </div>
 
 
-{{!-- <div class="main__signup">
-    <div class="container login_container">
-      <div class="col">
-        <h2>Login</h2>
-        <form method="POST" action="/login">
-          <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Email address</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name='email'>
-          </div>
-          <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Password</label>
-            <input type="password" class="form-control" id="exampleInputPassword1" name="password">
-          </div>
-          <button type="submit" class="btn btn-danger signup__terms">Login</button>
-          <div class="mb-3 form-check">
-          </div>
-        </form> --}}
 
-        {{#if errorMessage}}
-          <p>{{ errorMessage }}</p>
-        </div>
-        {{/if}}
+        
     {{!--   
     </div>
   </div> --}}

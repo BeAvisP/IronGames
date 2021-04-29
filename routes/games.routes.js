@@ -7,20 +7,20 @@ const Game = require("../models/Game.model");
 router.get("/", (req, res, next) => {
   Game.find({})
     .then((games) => {
-      if(req.user){
+      if (req.user) {
         mappedGames = games.map((game) => {
-          if(req.user.gameList.includes(game._id)){
+          if (req.user.gameList.includes(game._id)) {
             game.owned = true;
-          } else if(req.user.wishlist.includes(game._id)){
+          } else if (req.user.wishlist.includes(game._id)) {
             game.wishlisted = true;
           }
           return game;
         });
       } else {
         mappedGames = games;
-      } 
-      res.render("games/game-list", { games, sessionUser: req.user })
-  })
+      }
+      res.render("games/game-list", { games, sessionUser: req.user });
+    })
     .catch((error) => next(error));
 });
 
@@ -30,19 +30,23 @@ router.get("/search", (req, res, next) => {
   if (search) {
     Game.find({ name: { $regex: `.*(?i)${search}.*` } })
       .then((games) => {
-        if(req.user){
+        if (req.user) {
           mappedGames = games.map((game) => {
-            if(req.user.gameList.includes(game._id)){
+            if (req.user.gameList.includes(game._id)) {
               game.owned = true;
-            } else if(req.user.wishlist.includes(game._id)){
+            } else if (req.user.wishlist.includes(game._id)) {
               game.wishlisted = true;
             }
             return game;
           });
         } else {
           mappedGames = games;
-        }       
-        res.render("games/game-list", { games: mappedGames, search, sessionUser: req.user })
+        }
+        res.render("games/game-list", {
+          games: mappedGames,
+          search,
+          sessionUser: req.user,
+        });
       })
       .catch((error) => next(error));
   } else {

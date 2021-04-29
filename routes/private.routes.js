@@ -56,7 +56,7 @@ router.post(
   }
 );
 
-//Delete
+//Profile delete
 router.post("/:id/delete", isLoggedIn, (req, res) => {
   User.findByIdAndRemove(req.params.id)
     .then(() => {

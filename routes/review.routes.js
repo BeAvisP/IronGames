@@ -39,7 +39,8 @@ router.post("/:id/downvote", isLoggedIn, (req, res, next) => {
 router.get("/:id/edit", isLoggedIn, (req, res, next) => {
   const backURL = req.header("Referer");
   const host = req.headers.host;
-  const redirectURL = backURL.split(`https://${host}`)[1] || backURL.split(`http://${host}`)[1];
+  const redirectURL =
+    backURL.split(`https://${host}`)[1] || backURL.split(`http://${host}`)[1];
   const { id } = req.params;
   Review.findById(id)
     .then((review) =>

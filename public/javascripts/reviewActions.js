@@ -49,7 +49,9 @@ window.onload = () => {
                     <div class="d-flex">
                       <form action="/review/${_id}/upvote" method="POST">
                         <button type="submit" ${
-                          !sessionUserRev ? 'class="upvote"' : ""
+                          !sessionUserRev
+                            ? 'class="upvote fas fa-arrow-circle-up"'
+                            : ""
                         } class="fas fa-arrow-circle-up" ${
                 sessionUserRev ? "disabled" : ""
               }><span>
@@ -57,7 +59,9 @@ window.onload = () => {
                       </form>
                       <form action="/review/{{_id}}/downvote" method="POST">
                         <button type="submit" ${
-                          !sessionUserRev ? 'class="downvote"' : ""
+                          !sessionUserRev
+                            ? 'class="downvote fas fa-arrow-circle-down"'
+                            : ""
                         } class="fas fa-arrow-circle-down" ${
                 sessionUserRev ? "disabled" : ""
               }><span>

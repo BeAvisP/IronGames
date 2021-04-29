@@ -62,13 +62,12 @@ router.post("/:id/edit", isLoggedIn, (req, res, next) => {
     .catch((error) => next(error));
 });
 
-// router.post("/:id/delete", isLoggedIn, (req, res, next) => {
-//   const { id } = req.params;
-//   const { gameID: game } = req.body;
-//   Review.findByIdAndDelete(id)
-//     .then(() => res.redirect(`/game/${game}`))
-//     .catch((error) => next(error));
-// });
+router.post("/:id/delete", isLoggedIn, (req, res, next) => {
+  const { id } = req.params;
+  Review.findByIdAndDelete(id)
+    .then(() => res.redirect(`/user/${req.user._id}/reviews`))
+    .catch((error) => next(error));
+});
 
 router.post("/:id/delete", isLoggedIn, (req, res, next) => {
   const { id } = req.params;

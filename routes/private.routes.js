@@ -29,29 +29,33 @@ router.post(
     { name: "profile_Background", maxCount: 1 },
   ]),
   (req, res) => {
-    const { user, city, description, facebook, twitter, steam } = req.body;
+    const { user, city, description, facebook, twitter, steam, genres } = req.body;
     const { _id: id } = req.user;
+    console.log(genres);
     if (req.files) {
-      User.findByIdAndUpdate(
-        id,
-        {
-          name: user,
-          city,
-          description,
-          social: { steam: steam, twitter: twitter, facebook: facebook },
-          profile_pic: req.files.profileImage
-            ? req.files.profileImage[0].path
-            : req.user.profile_pic,
-          profile_Background: req.files.profile_Background
-            ? req.files.profile_Background[0].path
-            : req.user.profile_Background,
-        },
-        { new: true }
-      )
-        .then((user) => {
-          res.redirect(`/user/${user._id}`);
-        })
-        .catch((error) => console.error(error));
+      User.findById(id).then((currentUser) => {
+        User.findByIdAndUpdate(
+          id,
+          {
+            name: user,
+            city,
+            description,
+            genres,
+            social: { steam: steam, twitter: twitter, facebook: facebook },
+            profile_pic: req.files.profileImage
+              ? req.files.profileImage[0].path
+              : currentUser.profile_pic,
+            profile_Background: req.files.profile_Background
+              ? req.files.profile_Background[0].path
+              : currentUser.profile_Background,
+          },
+          { new: true }
+        )
+          .then((user) => {
+            res.redirect(`/user/${user._id}`);
+          })
+          .catch((error) => console.error(error));
+      });
     }
   }
 );

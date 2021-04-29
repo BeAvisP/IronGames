@@ -5,8 +5,9 @@ const User = require("../models/User.model");
 const router = express.Router();
 const saltRounds = 10;
 const { isLoggedIn, isLoggedOut } = require("../middlewares/auth");
-const transporter = require('../configs/nodemailer.config');
-const mailTemplate = require('../templates/mail.template');
+const transporter = require("../configs/nodemailer.config");
+const mailTemplate = require("../templates/mail.template");
+const app = require("../app");
 
 router.get("/signup", isLoggedOut, (req, res) => {
   res.render("auth/signup");
@@ -44,17 +45,18 @@ router.post("/signup", isLoggedOut, (req, res) => {
           if (error) {
             next(error);
           }
-          transporter.sendMail({
-            from: "IronGames <irongames2021@gmail.com>",
-            to: email, 
-            subject: "Welcome to IronGames",
-            text: "Welcome",
-            html: mailTemplate(name),
-          })
-          .then(() => {
-            return res.redirect(`/user/${newUser._id}`);
-          })
-          .catch( error => res.redirect(`/user/${newUser._id}`));          
+          transporter
+            .sendMail({
+              from: "IronGames <irongames2021@gmail.com>",
+              to: email,
+              subject: "Welcome to IronGames",
+              text: "Welcome",
+              html: mailTemplate(name),
+            })
+            .then(() => {
+              return res.redirect(`/user/${newUser._id}`);
+            })
+            .catch((error) => res.redirect(`/user/${newUser._id}`));
         });
       })
       .catch((error) => {
@@ -85,6 +87,20 @@ router.post(
     failureFlash: true,
     passReqToCallback: true,
   })
+);
+
+// Login with google (Social Passport)
+router.get(
+  "/auth/google",
+  passport.authenticate("google", { scope: ["profile"] })
+);
+
+router.get(
+  "/auth/google/callback",
+  passport.authenticate("google", { failureRedirect: "/login" }),
+  (req, res) => {
+    res.redirect("/");
+  }
 );
 
 router.get("/logout", isLoggedIn, (req, res) => {

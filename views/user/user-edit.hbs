@@ -1,29 +1,63 @@
 
 {{> profileBanner }}
+<br>
+<h3 class="container">Form</h3>
 
-<div class="container">
+<br>
 <form action="/profile/edit" method="POST" enctype="multipart/form-data">
-  <label for="profileImage">Profile image</label>
-  <input type="file" name='profileImage' value="{{user.profile_pic}}">
+  <div class="container">
+  <div class="row">
+    <div class="mb-3 col">
+      <label for="profileImage" class="form-label">Profile image</label>
+      <input class="form-control" type="file" id="formFileDisabled" name='profileImage' value="{{user.profile_pic}}">
+    <br>
+
+    <div class="mb-3 col">
+      <label for="profile_Background" class="form-label">Background</label>
+      <input class="form-control" type="file" id="formFileDisabled" name="profile_Background" value="{{user.profile_Background}}">
+    </div
+    </div>
+  </div>
   <hr>
-  <label for="profile_Background">Background</label>
-  <input type="file" name="profile_Background" value="{{user.profile_Background}}">
-  <hr>
-  <label for="username">Username</label>
-  <input type="text" name="user" value="{{user.name}}"> 
-  <label for="city">City</label>
-  <input type="text" name='city' value="{{user.city}}">
 
-  <label for="description">Description</label>
-  <input type="text" name="description" value="{{user.description}}">
+  <div class="container">
+    <div class="row">
+    <div class="mb-3 col">
+      <label for="username" class="form-label">Username</label>
+      <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="username" name="user" value="{{user.name}}">
+    </div>
 
-  <label for="Social">Social</label>
-  <input type="text" name="facebook" value="{{user.social.facebook}}">
-  <input type="text" name="twitter" value="{{user.social.twitter}}">
-  <input type="text" name="steam" value="{{user.social.steam}}">
-
-  <button type="submit">Save</button>
+    <div class="mb-3 col">
+      <label for="city" class="form-label">City</label>
+      <input type="text" class="form-control" placeholder="city" name='city' value="{{user.city}}">
+    </div>
+  </div>
+  <div class="mb-3">
+    <label for="description" class="form-label">Description</label>
+    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="description" value="{{user.description}}"></textarea>
+  </div>
+  {{!-- Social --}}
+  <div class="row">
+    <div class="mb-3 col-4">
+      <label for="exampleFormControlInput1" class="form-label">Facebook</label>
+      <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Facebook account" name="facebook" value="{{user.social.facebook}}">
+    </div>
+    <div class="mb-3 col-4">
+      <label for="exampleFormControlInput1" class="form-label">Twitter</label>
+      <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Twitter account" name="twitter" value="{{user.social.twitter}}">
+    </div>
+    <div class="mb-3 col-4">
+      <label for="exampleFormControlInput1" class="form-label">Steam</label>
+      <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Steam account" name="steam" value="{{user.social.steam}}">
+    </div>
+  </div>
+  <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+    <button class="btn btn-primary me-md-2" type="submit">Save</button>
+  </div>
 </form>
-
-<a href="/user/{{user._id}}">Back</a>
 </div>
+
+
+{{!--  <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+    <button class="btn btn-primary me-md-2" type="submit"><a href="/user/{{user._id}}">Back</a></button>
+  </div> --}}

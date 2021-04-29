@@ -55,6 +55,10 @@ h2 {
     .navbar .dropdown-menu .dropdown-item:hover {
       background-color: #cf000070; }
 
+.navbar .fas {
+  padding: 0 5px;
+  font-size: 30px; }
+
 /* Sign-up and Login */
 .main__signup {
   margin: 20% 5%;

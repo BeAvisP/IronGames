@@ -61,7 +61,7 @@
       </div>
     </div>
   </section>
-  
+
   <section class="my-4">
     <div class="accordion accordion-flush" id="game-photos">
       <div class="accordion-item">
@@ -96,7 +96,11 @@
   {{/if}}
 
   {{!-- List of reviews --}}
-  {{> reviewPost}}
+  <div class="review-container">
+    {{#each reviews}}
+      {{> reviewPost}}
+    {{/each}}
+  </div>
 
   <script src="/javascripts/axiosHandler.js"></script>
   <script src="/javascripts/reviewActions.js"></script>

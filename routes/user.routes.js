@@ -11,7 +11,7 @@ router.get("/:id/collection", (req, res) => {
     .populate("gameList")
     .then((user) => {
       if (JSON.stringify(req.user._id) === JSON.stringify(id)) {
-        authUser = true; 
+        authUser = true;
         user.gameList.map((game) => {
           game.authUser = true;
           return game;
@@ -20,7 +20,7 @@ router.get("/:id/collection", (req, res) => {
       res.render("user/user-collection", {
         user,
         sessionUser: req.user,
-        authUser
+        authUser,
       });
     });
 });
@@ -33,7 +33,7 @@ router.get("/:id/wishlist", (req, res) => {
     .populate("wishlist")
     .then((user) => {
       if (JSON.stringify(req.user._id) === JSON.stringify(id)) {
-        authUser = true; 
+        authUser = true;
         user.wishlist.map((game) => {
           game.authUser = true;
           return game;
@@ -42,24 +42,35 @@ router.get("/:id/wishlist", (req, res) => {
       res.render("user/user-wishlist", {
         user,
         sessionUser: req.user,
-        authUser
+        authUser,
       });
     });
 });
 
-
 //Profile reviews
 router.get("/:id/reviews", (req, res) => {
   let authUser = false;
-  const {id} = req.params;
-  Review.find({user: id})
-  .populate("game")
-  .then((reviews)=> {
-    if (JSON.stringify(req.user._id) === JSON.stringify(id)){
-      authUser = true; 
-  }
-  res.render('user/user-reviews', {reviews,sessionUser: req.user, authUser, user: req.user}  )
-  })
+  const { id } = req.params;
+  Review.find({ user: id })
+    .populate("game")
+    .populate("user")
+    .sort({ created_at: -1 })
+    .then((reviews) => {
+      if (JSON.stringify(req.user._id) === JSON.stringify(id)) {
+        authUser = true;
+        reviews.map((review) => {
+          review.sessionUserRev = true;
+          return review;
+        });
+      }
+      console.log(reviews)
+      res.render("user/user-reviews", {
+        reviews,
+        sessionUser: req.user,
+        authUser,
+        user: req.user,
+      });
+    });
 });
 
 //Profile Game List and Wishlist

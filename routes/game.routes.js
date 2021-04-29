@@ -60,6 +60,7 @@ router.post("/add-collection", isLoggedIn, (req, res, next) => {
   const redirectURL = backURL.split(`http://${host}`)[1];
   const { gameID } = req.body;
   const { _id: userID } = req.user;
+  console.log(backURL, host, redirectURL, gameID);
   User.findById(userID)
     .then((user) => {
       if (user) {

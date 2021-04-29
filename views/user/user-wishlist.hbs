@@ -3,7 +3,7 @@
 <div class="container">
   <h3>Wishlist</h3>
   <div class="d-flex flex-wrap justify-content-center">
-    {{#each mappedWishlist}}
+    {{#each user.wishlist}}
     <div class="game-container">
       {{> gameCard }}
       {{#if authUser}}

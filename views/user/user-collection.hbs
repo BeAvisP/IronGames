@@ -4,7 +4,7 @@
 <div class="container">
   <h3>Game List</h3>
   <div class="d-flex flex-wrap justify-content-center">
-    {{#each mappedGames}}
+    {{#each user.gameList}}
     <div class="game-container">
       {{> gameCard }}
       {{#if authUser}}

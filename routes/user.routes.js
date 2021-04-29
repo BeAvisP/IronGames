@@ -6,14 +6,13 @@ const Review = require("../models/Review.model");
 //Profile Game List
 router.get("/:id/collection", (req, res) => {
   let authUser = false;
-  let mappedGames = [];
   const { id } = req.params;
   User.findById(id)
     .populate("gameList")
     .then((user) => {
       if (JSON.stringify(req.user._id) === JSON.stringify(id)) {
-        authUser = true;
-        mappedGames = user.gameList.map((game) => {
+        authUser = true; 
+        user.gameList.map((game) => {
           game.authUser = true;
           return game;
         });
@@ -21,8 +20,7 @@ router.get("/:id/collection", (req, res) => {
       res.render("user/user-collection", {
         user,
         sessionUser: req.user,
-        authUser,
-        mappedGames,
+        authUser
       });
     });
 });
@@ -30,23 +28,21 @@ router.get("/:id/collection", (req, res) => {
 //Profile Wishlist
 router.get("/:id/wishlist", (req, res) => {
   let authUser = false;
-  let mappedWishlist = [];
   const { id } = req.params;
   User.findById(id)
     .populate("wishlist")
     .then((user) => {
       if (JSON.stringify(req.user._id) === JSON.stringify(id)) {
-        authUser = true;
-        mappedWishlist = user.wishlist.map((wishlist) => {
-          wishlist.authUser = true;
-          return wishlist;
+        authUser = true; 
+        user.wishlist.map((game) => {
+          game.authUser = true;
+          return game;
         });
       }
       res.render("user/user-wishlist", {
         user,
         sessionUser: req.user,
-        authUser,
-        mappedWishlist,
+        authUser
       });
     });
 });

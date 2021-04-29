@@ -37,9 +37,7 @@ h2 {
 /* NAVBAR */
 .navbar {
   background-color: #990100;
-  position: fixed;
-  width: 100%;
-  z-index: 999; }
+  width: 100%; }
   .navbar .navbar-nav .nav-link {
     color: #f2f2f2; }
   .navbar .navbar-nav .nav-link:hover {
@@ -57,6 +55,10 @@ h2 {
     .navbar .dropdown-menu .dropdown-item:hover {
       background-color: #cf000070; }
 
+.navbar .fas {
+  padding: 0 5px;
+  font-size: 30px; }
+
 /* Sign-up and Login */
 .main__signup {
   margin: 20% 5%;
@@ -71,7 +73,6 @@ h2 {
 
 /* Profile */
 .container__profile {
-  background-color: #1f1f1f;
   color: #fff; }
 
 .imagesProfile img {
@@ -153,12 +154,11 @@ h2 {
   margin: 0 20px; }
 
 .buttom__profile--delete {
-  margin-right: 5px;
+  margin-right: 0px;
   padding: 5px;
-  background: #cf0000;
+  background: #222529;
   color: inherit;
-  border: #990001;
-  box-shadow: 3px 7px 10px 8px #111; }
+  border: 2px solid #222529; }
 
 .hide {
   display: none;
@@ -174,7 +174,8 @@ h2 {
   .game-container .card {
     background-color: #990100;
     box-shadow: inset 0px -10px 20px 1px #000000db;
-    border: none; }
+    border: none;
+    max-width: 18rem; }
 
 .card-img-top {
   object-fit: cover;
@@ -203,8 +204,11 @@ h2 {
     width: 100%; }
   .game-header h3 {
     position: absolute;
-    top: 45%;
-    left: 45%; }
+    top: 50px;
+    left: calc(40% - 30px);
+    color: #f2f2f2;
+    font-size: 5rem;
+    font-weight: 900; }
   .game-header .game-card-actions {
     position: absolute;
     top: 4%;
@@ -216,11 +220,28 @@ h2 {
 .game-gallery {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center; }
+  justify-content: center;
+  background: #222529; }
   .game-gallery .gallery-img {
     height: 250px;
     margin: 15px 15px;
     border: 1px solid white; }
+
+.accordion-button {
+  border-bottom-right-radius: calc(.25rem - 1px);
+  border-bottom-left-radius: calc(.25rem - 1px);
+  background: #990100; }
+
+.accordion-collapse {
+  background: #990100; }
+
+.accordion-button {
+  z-index: 1;
+  color: #fff; }
+
+.detail__game a {
+  color: #cf0000;
+  text-decoration: none; }
 
 /* REVIEWS */
 .review-avatar {
@@ -244,5 +265,11 @@ h2 {
     color: green; }
   .reviews-actions button.downvote {
     color: #c60100; }
+
+.reviews-actions a {
+  color: #990001; }
+
+.reviews__links a {
+  color: #990001; }
 
 /*# sourceMappingURL=style.css.map */

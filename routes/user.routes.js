@@ -63,12 +63,11 @@ router.get("/:id/reviews", (req, res) => {
           return review;
         });
       }
-      console.log(reviews)
       res.render("user/user-reviews", {
         reviews,
         sessionUser: req.user,
         authUser,
-        user: req.user,
+        user: reviews[0].user,
       });
     });
 });

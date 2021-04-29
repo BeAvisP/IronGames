@@ -67,7 +67,7 @@ module.exports = (app) => {
             User.create({
               google_id: profile.id,
               email: profile._json.email,
-              username: profile.displayName,
+              name: profile.displayName,
               profile_pic: profile._json.picture,
             })
               .then((newUser) => {

@@ -174,7 +174,8 @@ h2 {
   .game-container .card {
     background-color: #990100;
     box-shadow: inset 0px -10px 20px 1px #000000db;
-    border: none; }
+    border: none;
+    max-width: 18rem; }
 
 .card-img-top {
   object-fit: cover;
@@ -203,8 +204,11 @@ h2 {
     width: 100%; }
   .game-header h3 {
     position: absolute;
-    top: 45%;
-    left: 45%; }
+    top: 50px;
+    left: calc(40% - 30px);
+    color: #f2f2f2;
+    font-size: 5rem;
+    font-weight: 900; }
   .game-header .game-card-actions {
     position: absolute;
     top: 4%;
@@ -232,9 +236,12 @@ h2 {
   background: #990100; }
 
 .accordion-button {
-  border-radius: 0;
   z-index: 1;
   color: #fff; }
+
+.detail__game a {
+  color: #cf0000;
+  text-decoration: none; }
 
 /* REVIEWS */
 .review-avatar {

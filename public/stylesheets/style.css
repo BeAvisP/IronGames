@@ -255,9 +255,9 @@ h2 {
   .reviews-actions button.downvote {
     color: #c60100; }
 
-/* .reviews-actions a{
-  color: #990001;
-} */
+.reviews-actions a {
+  color: #990001; }
+
 .reviews__links a {
   color: #990001; }
 

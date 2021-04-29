@@ -1,5 +1,5 @@
 {{> profileBanner }}
-
+<br>
 <div class="container">
   <h3>Reviews</h3>
   {{!-- List of reviews --}}
@@ -7,7 +7,7 @@
     {{#each reviews}}
     <div class="card text-dark bg-light my-4">
       <div class="h5 card-header d-flex align-items-center justify-content-between">
-        <div>
+        <div class="reviews__links">
           {{#if user._id}}<a href="/user/{{user._id}}"><img src="{{user.profile_pic}}" alt="user-pic"
               class="review-avatar"><span class="mx-4">{{user.name}}</span></a> {{/if}}
           {{#unless user}}<img

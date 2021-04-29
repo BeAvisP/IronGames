@@ -1,6 +1,6 @@
 <div class="card text-dark bg-light my-4">
   <div class="h5 card-header d-flex align-items-center justify-content-between">
-    <div>
+    <div class="main__review">
       {{#if user._id}}<a href="/user/{{user._id}}"><img src="{{user.profile_pic}}" alt="user-pic"
           class="review-avatar"><span class="mx-4">{{user.name}}</span></a> {{/if}}
       {{#unless user}}<img

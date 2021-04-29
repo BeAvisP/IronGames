@@ -51,9 +51,7 @@ h2 {
 /* NAVBAR */
 .navbar {
   background-color: #990100;
-  position: fixed;
   width: 100%;
-  z-index: 999;
   .navbar-nav {
     .nav-link {
       color: #f2f2f2;
@@ -95,7 +93,6 @@ h2 {
 
 /* Profile */
 .container__profile {
-  background-color: #1f1f1f;
   color: #fff;
 }
 .imagesProfile img {
@@ -181,12 +178,11 @@ h2 {
   margin: 0 20px;
 }
 .buttom__profile--delete {
-  margin-right: 5px;
+  margin-right: 0px;
   padding: 5px;
-  background: #cf0000;
+  background: #222529;
   color: inherit;
-  border: #990001;
-  box-shadow: 3px 7px 10px 8px #111;
+  border:2px solid #222529;
 }
 
 .hide {
@@ -257,11 +253,26 @@ h2 {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  background: #222529;
   .gallery-img {
     height: 250px;
     margin: 15px 15px;
     border: 1px solid white;
   }
+}
+.accordion-button{
+  border-bottom-right-radius: calc(.25rem - 1px);
+  border-bottom-left-radius: calc(.25rem - 1px);
+  background: #990100;
+} 
+.accordion-collapse{
+  background: #990100;
+}
+
+.accordion-button {
+  border-radius: 0;
+  z-index: 1;
+  color: #fff;
 }
 
 /* REVIEWS */
@@ -291,3 +302,15 @@ h2 {
     color: #c60100;
   }
 }
+.reviews-actions a{
+  color: #990001;
+}
+.reviews__links a{
+  color: #990001;
+}
+
+
+
+
+
+

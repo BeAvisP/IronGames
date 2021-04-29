@@ -1,4 +1,4 @@
-# Project Name
+# IronGames
 
 <br>
 
@@ -6,7 +6,7 @@
 
 ## Description
 
-Project Module 2 is an online database of information related to video games content online – including, ratings, and fan and critical reviews.
+IronGames is a social platform for videogames, an online database with information where the users can bookmark and wishlist games, get recomendations based on it's favourite genres and write reviews and vote other user reviews.
 
 
 <br>
@@ -70,22 +70,23 @@ User
 
 ```javascript
 {
-  name: { type: String, require, unique},
-  email: {type: String, requiere},
-  password: {String, requiere},
-  ID: Object_ID,
-  image: String,
-  Description: {type: String, maxlength: 280},
-  Rol: {type: String},
-  Gamelist:{Object_ID [] },
-  Wishlist: {Object_ID [] },
-  Social: {
-  facebook: String,
-  twitter: String,
-  Steam: String
+  google_id: { type: String },
+  name: { type: String, require: true, unique: true },
+  email: { type: String, require: true, unique: true },
+  password: { type: String, require: true },
+  city: { type: String },
+  profile_pic: {type: String, default:'https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png'},
+  profile_Background: {type: String, default:'https://cdn-res.keymedia.com/cms/images/ca/155/0319_637171637373959129.jpg'},
+  description: { type: String, maxlength: 280 },
+  rol: { type: String },
+  gameList: [{ type: Schema.Types.ObjectId, ref: "Game" }],
+  wishlist: [{ type: Schema.Types.ObjectId, ref: "Game" }],
+  social: {
+    facebook: { type: String },
+    twitter: { type: String },
+    steam: { type: String },
   },
-  Genres:[],
-  Location: String
+  genres: []
 }
 
 ```
@@ -96,14 +97,18 @@ Review
 
 ```javascript
 {
-  _id: Object_ID,
-  User: { type: Schema.Types.ObjectId, ref:'User' },
-  Game: {type: Schema.Types.ObjectId, ref: 'Game'},
-  Comment: String,
-  Timestamp: Date,
-  Upvote: Number,
-  Downvote: Number
-}
+  user: { type: Schema.Types.ObjectId, ref: "User" },
+    game: { type: Schema.Types.ObjectId, ref: "Game" },
+    comment: { type: String },
+    upvote: { type: Number, default: 0 },
+    downvote: { type: Number, default: 0 },
+  },
+  {
+    timestamps: {
+      createdAt: "created_at",
+      updatedAt: "updated_at",
+    }
+  }
 
 ```
 
@@ -113,16 +118,18 @@ Game
 ```javascript
 {
   _id: Object_ID,
-  Name: String,
-  Released: String,
-  Image: String,
-  Metacritic: number,
-  Genres: [],
-  Api_id: String,
-  Screenshoots: [''],
-  Upvote: Number,
-  Downvote: Number,
-  GameSaved: Number
+  name: { type: String, require: true },
+  released: { type: String },
+  background_image: { type: String },
+  metacritic: { type: Number },
+  genres: { type: [String] },
+  tags: { type: [String] },
+  screenshoots: { type: [String] },
+  apiID: {type: Number, require: true, unique: true},
+  website: { type: String },
+  metacritic_url: { type: String },
+  developers: { type: [String] },
+  description: { type: String }
 }
 
 ```
@@ -135,6 +142,13 @@ Game
 
 
 ## Backlog
+
+- Create confirmation modal before a user is deleted.
+- Send emails to a user when one of it's reviews has recibe an upvote or downvote.
+- Add a map so people can see where in the world are located the rest of the users of the app.
+- Simulate all actions in the app to behave like a SPA.
+- Allow users to create custom game list and share with others.
+- Implement user roles with permissions and different functionalities.
 
 [See the Trello board.](https://trello.com/b/sdPDPIGx/module2-project)
 
@@ -154,7 +168,7 @@ The url to your repository and to your deployed project
 
 [Repository Link](https://github.com/BeAvisP/M2-Project)
 
-[Deploy Link]()
+[Deploy Link](https://iron-games.herokuapp.com/)
 
 
 

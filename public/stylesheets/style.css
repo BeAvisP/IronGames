@@ -253,6 +253,10 @@ h2 {
   color: #cf0000;
   text-decoration: none; }
 
+.accordion-button:not(.collapsed) {
+  color: #f2f2f2;
+  background-color: #990100; }
+
 /* REVIEWS */
 .review-avatar {
   width: 75px;

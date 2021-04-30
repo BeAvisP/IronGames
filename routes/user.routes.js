@@ -51,7 +51,9 @@ router.get("/:id/wishlist", (req, res) => {
 router.get("/:id/reviews", (req, res) => {
   let authUser = false;
   const { id } = req.params;
-  Review.find({ user: id })
+  User.findById(id)
+  .then((user)=>{
+    Review.find({ user: id })
     .populate("game")
     .populate("user")
     .sort({ created_at: -1 })
@@ -67,9 +69,12 @@ router.get("/:id/reviews", (req, res) => {
         reviews,
         sessionUser: req.user,
         authUser,
-        user: reviews[0].user,
+        user: user,
       });
-    });
+    })
+    .catch(error => console.error(error));
+  })
+  .catch(error => console.error(error));
 });
 
 //Profile Game List and Wishlist

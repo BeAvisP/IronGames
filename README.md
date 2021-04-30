@@ -20,11 +20,14 @@ IronGames is a social platform for videogames, an online database with informati
 - **login** - As users, we want to be able to log in on the web page so that we can get back to our profile.
 - **logout** - As users, we want to be able to log out from the web page so that we can make sure no one will access our account.
 - **profile page** - As users, we want to see be able to see users profiles, edit our own profile, manage our games and access our game collections.
+- **profile edit page** - As users, we want to see be able to edit our own profile, manage our games and access our game collections.
 - **My games page** - As users, we want to see be able to see the user saved games and be able to remove game from the collection.
 - **Wishlist page** - As users, we want to see be able to see the user whislisted games and be able to remove game from the collection.
+- **Reviews page** - As users, we want to see be able to see the user reviews and be able to remove or edit from the user profile.
+- **Review edit page** - As users, we want to edit the reviews made.
 - **Games page** - As users, we want to be able to see all the games availables and search them.
 - **Game details** - As users, we want to see the details of a selected game, upvote the game, add to our collections or add a review.
-- **Review edit page** - As users, we want to edit the reviews made.
+- **Games recomendations** - As users, we want to be able to see recomendations of games availables based on our prefered game genres.
 
 
 
@@ -65,6 +68,9 @@ IronGames is a social platform for videogames, an online database with informati
 | `GET`      | `/review/:id/edit`           | Private route. Renders the `review-edit` view.               |                                                          |
 | `POST`     | `/review/:id/edit`           | Private route. Sends `review-edit` info to Server and Updates the review in DDBB.| { comment }                          |
 | `POST`     | `/review/:id/delete`         | Private route. Removes the review from the DDBB              | { _id }                                                          |
+| `POST`     | `/review/axios/:id/delete`         | Private route. Removes the review from the DDBB              | { _id }                                                          |
+| `POST`     | `/review/:id/upvote`         | Private route. Updates the review from the DDBB              | { id, { downvote } }                                                          |
+| `POST`     | `/review/:id/downvote`         | Private route. Updates the review from the DDBB              | { id, { downvote } }                                                          |
 
 
 

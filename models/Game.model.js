@@ -9,7 +9,6 @@ const gameSchema = new Schema({
   genres: { type: [String] },
   tags: { type: [String] },
   screenshoots: { type: [String] },
-  gameSaved: { type: Number },
   apiID: {type: Number, require: true, unique: true},
   website: { type: String },
   metacritic_url: { type: String },

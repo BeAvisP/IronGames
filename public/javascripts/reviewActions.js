@@ -1,5 +1,5 @@
 window.onload = () => {
-  const axiosHandler = new AxiosHandler("http://localhost:3000");
+  const axiosHandler = new AxiosHandler("http://iron-games.herokuapp.com");
 
   let removeReview = document.querySelectorAll(".remove-review");
   const container = document.querySelector(".review-container");
@@ -10,12 +10,14 @@ window.onload = () => {
         const id = e.target.children[0].innerHTML;
         axiosHandler.removeReview(id).then((res) => {
           container.innerHTML = "";
-          res.data.forEach(
-            ({
-              _doc: { user, comment, created_at, downvote, upvote, _id },
-              sessionUserRev,
-            }) => {
-              container.innerHTML += `
+          console.log(res)
+          if(res) {
+            res.data.forEach(
+              ({
+                _doc: { user, comment, created_at, downvote, upvote, _id },
+                sessionUserRev,
+              }) => {
+                container.innerHTML += `
                 <div class="card text-dark bg-light my-4">
                   <div class="h5 card-header d-flex align-items-center justify-content-between">
                     <div>
@@ -53,8 +55,8 @@ window.onload = () => {
                             ? 'class="upvote fas fa-arrow-circle-up"'
                             : ""
                         } class="fas fa-arrow-circle-up" ${
-                sessionUserRev ? "disabled" : ""
-              }><span>
+                  sessionUserRev ? "disabled" : ""
+                }><span>
                             ${upvote} </span></button>
                       </form>
                       <form action="/review/{{_id}}/downvote" method="POST">
@@ -63,8 +65,8 @@ window.onload = () => {
                             ? 'class="downvote fas fa-arrow-circle-down"'
                             : ""
                         } class="fas fa-arrow-circle-down" ${
-                sessionUserRev ? "disabled" : ""
-              }><span>
+                  sessionUserRev ? "disabled" : ""
+                }><span>
                             ${downvote} </span></button>
                       </form>
                     </div>
@@ -74,8 +76,9 @@ window.onload = () => {
                   </div>
                 </div>
                 `;
-            }
-          );
+              }
+            );
+          }
           removeReview = document.querySelectorAll(".remove-review");
           callRemove();
         });

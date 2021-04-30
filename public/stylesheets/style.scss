@@ -94,6 +94,16 @@ h2 {
   height: 100vh;
   margin: 0;
 }
+.signup__google{
+  width: 40%;
+  border-radius: 10px;
+  border: thin solid #888;
+  box-shadow: 1px 1px 1px grey;
+  white-space: nowrap;
+}
+.signup__google :hover{
+  cursor: pointer;
+}
 
 /* Profile */
 .container__profile {

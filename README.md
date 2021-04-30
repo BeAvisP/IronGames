@@ -194,4 +194,4 @@ The url to your repository and to your deployed project
 
 The url to your presentation slides
 
-[Slides Link](https://docs.google.com/presentation/d/1P5FIi0vHZBUcgUtmt1M4_lLCO5dwdJ4UOgtJa4ehGfk/edit?usp=sharing)
+[Slides Link](https://prezi.com/view/q81QDxlhlFgjPEMpFwnT/)

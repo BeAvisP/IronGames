@@ -2,7 +2,7 @@
   <div class="h5 card-header d-flex align-items-center justify-content-between">
     <div class="main__review">
       {{#if user._id}}<a href="/user/{{user._id}}"><img src="{{user.profile_pic}}" alt="user-pic"
-          class="review-avatar"><span class="mx-4">{{user.name}}</span></a> {{/if}}
+          class="review-avatar"><span class="mx-4 username__review">{{user.name}}</span></a> {{/if}}
       {{#unless user}}<img
         src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png" alt="user-pic"
         class="review-avatar"></a> <span class="mx-4">Unknown</span>{{/unless}}

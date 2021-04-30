@@ -144,7 +144,8 @@ h2 {
 /* Profile */
 .edit__profile {
   display: flex;
-  background-color: #990001; }
+  background-color: #990001;
+  font-family: 'Roboto', sans-serif; }
 
 .edit__profile a {
   color: #fff;

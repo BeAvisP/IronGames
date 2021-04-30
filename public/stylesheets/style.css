@@ -79,12 +79,8 @@ h2 {
   white-space: nowrap; }
 
 .signup__google :hover {
-  cursor: pointer; 
-}
-.image__poster--login{
-  width: 40vw;
-  height: 100vh;
-}
+  cursor: pointer; }
+
 /* Profile */
 .container__profile {
   color: #fff; }

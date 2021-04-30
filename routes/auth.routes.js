@@ -7,6 +7,7 @@ const saltRounds = 10;
 const { isLoggedIn, isLoggedOut } = require("../middlewares/auth");
 const transporter = require("../configs/nodemailer.config");
 const mailTemplate = require("../templates/mail.template");
+const app = require("../app");
 
 router.get("/signup", isLoggedOut, (req, res) => {
   res.render("auth/signup");
@@ -85,6 +86,20 @@ router.post(
     failureRedirect: "/login",
     failureFlash: true,
     passReqToCallback: true,
+  })
+);
+
+// Login with google (Social Passport)
+router.get(
+  "/auth/google",
+  passport.authenticate("google", { scope: ["profile", "email"] })
+);
+
+router.get(
+  "/auth/google/callback",
+  passport.authenticate("google", {
+    successRedirect: "/",
+    failureRedirect: "/login",
   })
 );
 

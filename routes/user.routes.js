@@ -67,7 +67,7 @@ router.get("/:id/reviews", (req, res) => {
         reviews,
         sessionUser: req.user,
         authUser,
-        user: req.user,
+        user: reviews[0].user,
       });
     });
 });

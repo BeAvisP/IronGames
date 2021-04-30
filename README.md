@@ -40,23 +40,31 @@ IronGames is a social platform for videogames, an online database with informati
 | ---------- | ---------------------------------- | ------------------------------------------------------------ | -------------------------------------------------------- |
 | `GET`      | `/`                                | Main page route.  Renders home `index` view.                 |                                                          |
 | `GET`      | `/login`                           | Renders `login` form view.                                   |                                                          |
-| `POST`     | `/login`                           | Sends Login form data to the server.                         | { email, password }                                      |
+| `POST`     | `/login`                           | Sends Login form data to the server. Redirects to `home page`                       | { email, password }                                      |
 | `GET`      | `/signup`                          | Renders `signup` form view.                                  |                                                          |
-| `POST`     | `/signup`                          | Sends Sign Up info to the server and creates user in the DDBB.| {  username, email, password, re-password  }             |
-| `GET`      | `/profile/:userID`                 | Renders public `user/profile` view.                                 |                                                          |
+| `POST`     | `/signup`                          | Sends Sign Up info to the server and creates user in the DDBB.Redirects to `user profile`.| {  name, email, password, re-password  }             |
+| `GET`     | `/logout`                          | Private route. User logout.                                  |                                                          |
+| `GET`      | `/auth/google`                 | Social signup/login with google.                                 |                                                          |
+| `GET`      | `/auth/google/callback`                 | Social signup/login with google callback.   view.                                 |                                                          |
+| `GET`      | `/user/:id`                 | Renders `user/profile` view.                                 |                                                          |
+| `GET`      | `/user/:id/collection`           | Renders `user-collection` view.                                   |                                                          |
+| `GET`      | `/user/:id/wishlist`        | Renders `user-wishlist` view.                                |                                                          |
+| `GET`      | `/user/:id/reviews`        | Renders `user-reviews` view.                                |                                                          |
 | `GET`      | `/profile/edit`                    | Private route. Render the `profile-edit` view.               |                                                          |
-| `POST`     | `/profile/edit`                    | Private route. Sends `profile-edit` info to server and Updates the user in DDBB. |  { username, location, description, genres, socia.facebook, social.steam, social.twitch, social.twitter }                                                        |
-| `POST`     | `/logout`                          | Private route. User logout.                                  |                                                          |
-| `GET`      | `/profile/:userID/user-collection`           | Renders `user-collection` view.                                   |                                                          |
-| `GET`      | `/profile/:userID/wishlist`        | Renders `user-wishlist` view.                                |                                                          |
-| `GET`      | `/games/search`                    | Renders filtered `game-list` view.                                    |                                                          |
+| `POST`     | `/profile/edit`                    | Private route. Sends `profile-edit` info to server and Updates the user in DDBB. |  { name, city, description, genres, social, profile_pic, profile_Background}                                                        |
+| `POST`     | `/profile/:id/delete`                    | Private route. Delete user from DDBB. |  { _id}                                                        |
 | `GET`      | `/games`                           | Renders `game-list` view.                                    |                                                          |
+| `GET`      | `/games/search`                    | Renders filtered `game-list` view.                                    |   
+| `GET`      | `/games/recomendations`                    | Renders `game-recomendations` view.                                    |                                                      |
 | `GET`      | `/game/:id`                        | Renders `game-detail` view.                                  |                                                          |
-| `POST`     | `/game/:id/update`                 | Private route. Sends `game-detail` info to Server and Updates the game in DDBB.| { upvote, downvote }                                                          |
-| `POST`     | `/review/:gameID/create`           | Sends review form data to the server and creates the review in the DDBB.|  { comment }                                  |
-| `GET`      | `/review/:reviewID/edit`           | Private route. Renders the `review-edit` view.               |                                                          |
-| `POST`     | `/review/:reviewID/edit`           | Private route. Sends `review-edit` info to Server and Updates the review in DDBB.| { comment }                          |
-| `POST`     | `/review/:reviewID/delete`         | Private route. Removes the review from the DDBB              |                                                          |
+| `POST`     | `/game/add-collection`                 | Private route. Add game to session user collection.| { _id}                                                          |
+| `POST`     | `/game/remove-collection`                 | Private route. Remove game to session user collection.| { _id}                                                          |
+| `POST`     | `/game/add-wishlist`                 | Private route. Add game to session user wishlist.| { _id}                                                          |
+| `POST`     | `/game/remove-wishlist`                 | Private route. Remove game to session user wishlist.| { _id}                                                          |
+| `POST`     | `/review/create`           | Sends review form data to the server and creates the review in the DDBB.| { user, game, comment }                                 |
+| `GET`      | `/review/:id/edit`           | Private route. Renders the `review-edit` view.               |                                                          |
+| `POST`     | `/review/:id/edit`           | Private route. Sends `review-edit` info to Server and Updates the review in DDBB.| { comment }                          |
+| `POST`     | `/review/:id/delete`         | Private route. Removes the review from the DDBB              | { _id }                                                          |
 
 
 

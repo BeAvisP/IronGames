@@ -8,6 +8,6 @@ class AxiosHandler {
 	}
 
   removeReview(reviewID){
-    return axios.post(`${this.baseURL}/review/${reviewID}/delete`);
+    return axios.post(`${this.baseURL}/review/axios/${reviewID}/delete`);
   }
 }

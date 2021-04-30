@@ -69,7 +69,7 @@ router.post("/:id/delete", isLoggedIn, (req, res, next) => {
     .catch((error) => next(error));
 });
 
-router.post("/:id/delete", isLoggedIn, (req, res, next) => {
+router.post("/axios/:id/delete", isLoggedIn, (req, res, next) => {
   const { id } = req.params;
   let gameID;
   Review.findById(id)
